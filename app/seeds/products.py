@@ -1,23 +1,29 @@
 from app.models import db, Product
 from datetime import datetime
+from app.list import products
+import random
+
 
 
 # Adds a demo user, you can add other users here if you want
 def seed_products():
-    p1= Product(
-        user_id =1, name='potatoe', description='toeish', price='0.99', image='https://raw.githubusercontent.com/michellekontoff/spudhub/main/product_images/potato.jpg', created_at=datetime.now(), updated_at= datetime.now()
-    )
-    p2= Product(
-        user_id =1, name='avocado', description='green', price='4.99',quantity=4, image='https://raw.githubusercontent.com/michellekontoff/spudhub/main/product_images/avocado.jpg', created_at=datetime.now(),updated_at=datetime.now()
-    )
-    p3= Product(
-        user_id =2, name='radish', description='rad', price='499.00',quantity=1, image='https://raw.githubusercontent.com/michellekontoff/spudhub/main/product_images/radish.jpg', created_at=datetime.now(), updated_at=datetime.now()
-    )
+    i = 0
 
-
-    db.session.add(p1)
-    db.session.add(p2)
-    db.session.add(p3)
+    while i < len(products):
+        name = products[i]
+        split_name = name.split("_")
+        j_name = (" ").join(split_name)
+        p = Product(
+            user_id = random.randint(1, 3),
+            name=f'{ j_name.title() }',
+            description=f'This is a locally grown { j_name }. It\'s fresh and ready to be eatten',
+            price=float(random.randint(1, 20)) + 0.99,
+            image=(f'https://raw.githubusercontent.com/michellekontoff/spudhub/main/product_images/{ name }.jpg'),
+            created_at=datetime.now(),
+            updated_at= datetime.now()
+        )
+        db.session.add(p)
+        i += 1
 
     db.session.commit()
 
