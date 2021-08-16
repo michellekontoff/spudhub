@@ -1,6 +1,6 @@
-from enum import unique
+# from enum import unique
 from .db import db
-
+from .order_detail import Order_Detail
 
 class Product(db.Model):
     __tablename__ = 'products'
@@ -13,6 +13,8 @@ class Product(db.Model):
     quantity = db.Column(db.Integer , nullable=True)
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
+
+    orders = db.relationship("Order", secondary=Order_Detail, backref=db.backref("products"), lazy=True)
 
     def to_dict(self):
         return {
