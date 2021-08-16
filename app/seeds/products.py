@@ -14,9 +14,7 @@ def seed_products():
         user_id =2, name='radish', description='rad', price='499.00',quantity=1, image='https://raw.githubusercontent.com/michellekontoff/spudhub/main/product_images/radish.jpg', created_at=datetime.now(), updated_at=datetime.now()
     )
 
-    # db.session.add(demo)
-    # db.session.add(marnie)
-    # db.session.add(bobbie)
+
     db.session.add(p1)
     db.session.add(p2)
     db.session.add(p3)
@@ -29,6 +27,7 @@ def seed_products():
 # TRUNCATE Removes all the data from the table, and RESET IDENTITY
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
+
 def undo_products():
     db.session.execute('TRUNCATE products RESTART IDENTITY CASCADE;')
     db.session.commit()

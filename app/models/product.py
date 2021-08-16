@@ -15,7 +15,6 @@ class Product(db.Model):
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
-# orders = db.relationship("Order", secondary='order_details', backref=db.backref("products"), lazy=True)
     reviews = db.relationship("Review", backref=db.backref("products"), lazy=True )
 
 
