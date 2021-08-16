@@ -1,5 +1,4 @@
 # from enum import unique
-from sqlalchemy.orm import backref
 from .db import db
 from .order_detail import Order_Detail
 
@@ -12,10 +11,11 @@ class Product(db.Model):
     description = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Numeric(10,2), nullable=False)
     quantity = db.Column(db.Integer , nullable=True)
+    image = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
-    orders = db.relationship("Order", secondary=Order_Detail, backref=db.backref("products"), lazy=True)
+# orders = db.relationship("Order", secondary='order_details', backref=db.backref("products"), lazy=True)
     reviews = db.relationship("Review", backref=db.backref("products"), lazy=True )
 
 

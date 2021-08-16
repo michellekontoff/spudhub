@@ -15,7 +15,7 @@ class Order(db.Model):
     updated_at = db.Column(db.Date , nullable=False)
 
 # Might need to add a reciprical property to products
-    products = db.relationship("Product", secondary=Order_Detail, backref=db.backref("orders"), lazy=True)
+    products = db.relationship("Product", secondary='order_details', backref=db.backref("orders"), lazy=True)
 
     def to_dict(self):
         return {
