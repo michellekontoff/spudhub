@@ -1,4 +1,5 @@
 # from enum import unique
+from sqlalchemy.orm import backref
 from .db import db
 from .order_detail import Order_Detail
 
@@ -15,6 +16,8 @@ class Product(db.Model):
     updated_at = db.Column(db.Date , nullable=False)
 
     orders = db.relationship("Order", secondary=Order_Detail, backref=db.backref("products"), lazy=True)
+    reviews = db.relationship("Review", backref=db.backref("products"), lazy=True )
+
 
     def to_dict(self):
         return {
@@ -24,6 +27,7 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price,
             'quantity': self.quantity,
+            'reviews': self.reviews,
             'created_at': self.created_at,
             'updated_at': self.updated_at
 
