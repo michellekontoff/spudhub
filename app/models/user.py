@@ -13,9 +13,9 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    products = db.relationship("Product", backref="users", lazy=True)
-    orders = db.relationship("Order", backref="users", lazy=True)
-    reviews = db.relationship("Review", backref="users", lazy=True)
+    # products = db.relationship("Product", backref="users", lazy=True)
+    # orders = db.relationship("Order", backref="users", lazy=True)
+    # reviews = db.relationship("Review", backref="users", lazy=True)
 
     @property
     def password(self):
@@ -33,6 +33,5 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'products': self.products,
-            'orders': self.orders
+# j
         }

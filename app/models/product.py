@@ -9,7 +9,7 @@ class Product(db.Model):
     user_id= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    price = db.Column(db.Numeric(10,2), nullable=False)
+    price = db.Column(db.Numeric(10,2, asdecimal=False), nullable=False )
     quantity = db.Column(db.Integer , nullable=True)
     image = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.Date , nullable=False)
