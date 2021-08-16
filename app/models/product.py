@@ -28,8 +28,11 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price,
             'quantity': self.quantity,
-            'reviews':[review.id for review in self.reviews],
+            # 'review_ids':[review.id for review in self.reviews],
             'created_at': self.created_at,
             'updated_at': self.updated_at
 
         }
+
+    def get_reviews(self):
+        return [review.to_dict() for review in self.reviews]
