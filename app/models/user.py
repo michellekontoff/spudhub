@@ -1,3 +1,5 @@
+from sqlalchemy.orm import backref
+from app.models.product import Product
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
@@ -10,6 +12,10 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    products = db.relationship("Product", backref="users", lazy=True)
+    orders = db.relationship("Order", backref="users", lazy=True)
+    reviews = db.relationship("Review", backref="users", lazy=True)
 
     @property
     def password(self):
@@ -26,5 +32,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'products': self.products,
+            'orders': self.orders
         }
