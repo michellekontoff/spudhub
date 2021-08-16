@@ -17,7 +17,12 @@ def test1():
 @test.route('/review')
 def test2():
     review = Review.query.first()
-    # print('---------------------------------')
-    # print(review)
+
     return review.to_dict()
-    # return 'Hi    !'
+
+
+
+@test.route('/order')
+def test3():
+    order = Order.query.first()
+    return order.to_dict()
