@@ -1,4 +1,5 @@
 # from enum import unique
+from app.models import review
 from .db import db
 from .order_detail import Order_Detail
 
@@ -9,13 +10,14 @@ class Product(db.Model):
     user_id= db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    price = db.Column(db.Numeric(10,2), nullable=False)
+    price = db.Column(db.Numeric(precision=10, scale=2, asdecimal=False), nullable=False )
     quantity = db.Column(db.Integer , nullable=True)
     image = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
     reviews = db.relationship("Review", backref=db.backref("products"), lazy=True )
+
 
 
     def to_dict(self):
@@ -26,8 +28,11 @@ class Product(db.Model):
             'description': self.description,
             'price': self.price,
             'quantity': self.quantity,
-            'reviews': self.reviews,
+            # 'review_ids':[review.id for review in self.reviews],
             'created_at': self.created_at,
             'updated_at': self.updated_at
 
         }
+
+    def get_reviews(self):
+        return [review.to_dict() for review in self.reviews]
