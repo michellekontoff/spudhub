@@ -29,8 +29,8 @@ class Product(db.Model):
             'price': self.price,
             'quantity': self.quantity,
             # 'review_ids':[review.id for review in self.reviews],
-            'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'created_at': str(self.created_at),
+            'updated_at': str(self.updated_at)
 
         }
 
