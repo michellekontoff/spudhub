@@ -31,7 +31,7 @@ const ProductEditForm = () => {
       if (data) {
         setErrors(data)
       }
-
+    history.push(`/`)
   };
 
   const submitDelete = () =>{

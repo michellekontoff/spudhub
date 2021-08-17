@@ -20,7 +20,7 @@ function HomePage() {
             <div className="container">
                 <ul className="list">
                     {products.map((product) => (
-                        <div className='product-container'>
+                        <div className='product-container' key={product.id}>
                             {user ?
                                 <button className='plus-btn'>
                                     <i className="fas fa-plus"></i>
