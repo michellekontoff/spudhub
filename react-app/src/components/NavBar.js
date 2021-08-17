@@ -64,6 +64,25 @@ const NavBar = () => {
         </div>
       </div>
     </div>
+
+
+
+    <div className="sidebar" style={!optionsOn ? {transform: 'translateX(-100%)'} : {}}>
+      <div className='sidebar_container'>
+        <div className="arrow-button" onClick={()=> setOptionsOn(!optionsOn)}>
+          <i className="fas fa-arrow-left"></i>
+        </div>
+        <div className='sidebar_userInfo'>
+          <div>
+            {user? <LogoutButton/> : 'More features coming soon!'}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
     </>
   );
 }
