@@ -12,9 +12,26 @@ nav{
     align-items: flex-end;
     justify-content: space-between;
     width: 100%;
-    margin-left: 1%;
+    margin-left: 2%;
     margin-right: 2%;
     margin-bottom: 1%;
+}
+
+.nav_logo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav_logo > *{
+    margin-right: 15%;
+}
+
+.nav_sidebar_icons{
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
 
 .nav_options > a{
@@ -25,11 +42,12 @@ nav{
 .nav_options{
     display: flex;
     width: 10%;
+    min-width: 130px;
     justify-content: space-between;
 }
 
-.test{
-    color: violet;
+.nav_cart_icon{
+    margin-left: 70%;
 }
 
 .sidebar {
@@ -41,4 +59,62 @@ nav{
     transition: all 0.2s linear;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0 8px 1px rgb(211, 211, 211);
+}
+
+.sidebar_container{
+    margin-left: 5%;
+    margin-top: 5%;
+
+}
+
+.arrow-button{
+    margin-left: 85%;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.arrow-button:hover{
+    box-shadow: 2.25px 2.25px 2.25px 2.25px lightgray;
+}
+
+.shopping_cart_bar{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    left: 100%;
+    transition: all 0.2s linear;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0 8px 1px rgb(211, 211, 211);
+}
+
+.cart_container{
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.cart_arrow_button{
+    margin-right: 85%;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cart_arrow_button:hover{
+    box-shadow: 2.25px 2.25px 2.25px 2.25px lightgray;
+}
+
+.cart_items{
+    margin-top: 5%;
 }
