@@ -11,6 +11,7 @@ import ProductPage from './components/Products/ProductPage';
 import { authenticate } from './store/session';
 import { fetchAllProducts } from './store/products';
 import HomePage from './components/Home/Homepage';
+import ProductCreateForm from './components/Products/ProductCreateForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,6 +48,9 @@ function App() {
         <Route path='/products/:productId' exact={true} >
           <ProductPage />
         </Route>
+        <ProtectedRoute path='/products/create' exact={true}>
+          <ProductCreateForm />
+        </ProtectedRoute>
         <Route path='/' exact={true} >
           <HomePage />
         </Route>

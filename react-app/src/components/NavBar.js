@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
@@ -10,7 +10,7 @@ const NavBar = () => {
 
   const user = useSelector(state => state.session.user);
   const [optionsOn, setOptionsOn] = useState(false);
-  const [cart, setCart] = useState(false);
+  const [cart, setCart] = useState(true);
 
   return (
     <>
@@ -57,6 +57,9 @@ const NavBar = () => {
             <p>
             {user ? 'Email:  ' + user.email : 'Or sign up to see more!'}
             </p>
+          </div>
+          <div>
+            <Link to="/product/create">Create New Product Listing</Link>
           </div>
           <div>
             {user? <LogoutButton/> : 'More features coming soon!'}
