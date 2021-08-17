@@ -11,7 +11,7 @@ class Product(db.Model):
     name = db.Column(db.String(50), unique=True, nullable=False)
     description = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Numeric(precision=10, scale=2, asdecimal=False), nullable=False )
-    quantity = db.Column(db.Integer , nullable=True)
+    quantity = db.Column(db.Integer , nullable=True, default=1)
     image = db.Column(db.Text, nullable=True)
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllProducts } from '../../store/products';
+// import { fetchAllProducts } from '../../store/products';
 import './Homepage.css'
 import { Link } from 'react-router-dom';
 
@@ -10,9 +10,9 @@ function HomePage() {
 
     const user = useSelector(state => state.session.user);
 
-    useEffect(() => {
-        dispatch(fetchAllProducts());
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchAllProducts());
+    // }, [dispatch])
 
     return (
         <div>
@@ -20,7 +20,7 @@ function HomePage() {
             <div className="container">
                 <ul className="list">
                     {products.map((product) => (
-                        <div className='product-container'>
+                        <div className='product-container' key={product.id}>
                             {user ?
                                 <button className='plus-btn'>
                                     <i className="fas fa-plus"></i>
