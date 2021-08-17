@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
 import { Redirect , useParams } from 'react-router-dom';
-import {fetchCreateProduct} from '../../store/products';
+import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
 
 /*
 TODO:
@@ -15,24 +15,29 @@ const ProductEditForm = () => {
 
   const params = useParams()
   const product = useSelector(state => state.products[params.id])
-    console.log(product)
+
   const [errors, setErrors] = useState([]);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState(0.00);
-  const [quantity, setQuantity] = useState(0);
-  const [image , setImage] = useState('')
+  const [name, setName] = useState(product.name);
+  const [description, setDescription] = useState(product.description);
+  const [price, setPrice] = useState(product.price);
+  const [quantity, setQuantity] = useState(product.quantity);
+  const [image , setImage] = useState(product.image)
 
   const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
     e.preventDefault();
-      const data = await dispatch(fetchCreateProduct(name, description, price,quantity,image));
+      const data = await dispatch(fetchEditProduct(product.id,name, description, price,quantity,image));
       if (data) {
         setErrors(data)
       }
 
   };
+
+  const submitDelete = async(e)=>{
+       await dispatch(fetchDeleteProduct(product.id))
+
+  }
 
   const updateName = (e) => {
     setName(e.target.value);
@@ -110,6 +115,10 @@ const ProductEditForm = () => {
         ></input>
       </div>
       <button type='submit'>Edit Product</button>
+      <button
+      type='button'
+      onClick ={submitDelete}
+      >Delete Product</button>
     </form>
   );
 };
