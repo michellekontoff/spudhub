@@ -2,6 +2,8 @@
 nav{
     background-color: green;
     height: 75px;
+    display: flex;
+    align-items: flex-end;
 }
 
 .nav_container{
@@ -9,15 +11,19 @@ nav{
     align-content:center;
     align-items: flex-end;
     justify-content: space-between;
+    width: 100%;
+    margin-left: 1%;
+    margin-right: 2%;
+    margin-bottom: 1%;
 }
 
 .nav_options > a{
     text-decoration: none;
-    color: rgb(10, 0, 0);
+    color:white;
 }
 
 .nav_options{
     display: flex;
-    width: 15%;
+    width: 10%;
     justify-content: space-between;
 }
