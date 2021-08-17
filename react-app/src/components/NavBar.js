@@ -64,25 +64,16 @@ const NavBar = () => {
         </div>
       </div>
     </div>
-
-
-
     <div className="shopping_cart_bar" style={!cart ? {transform: 'translateX(-100%)'} : {}}>
       <div className='cart_container'>
-        <div className="arrow-button" onClick={()=> setCart(!cart)}>
+        <div className="cart_arrow_button" onClick={()=> setCart(!cart)}>
           <i className="fas fa-arrow-right"></i>
         </div>
-        <div className='cart_userInfo'>
-          <div>
+        <div className='cart_items'>
             More features coming soon!
-          </div>
         </div>
       </div>
     </div>
-
-
-
-
     </>
   );
 }
