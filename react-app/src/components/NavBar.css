@@ -1,0 +1,23 @@
+
+nav{
+    background-color: green;
+    height: 75px;
+}
+
+.nav_container{
+    display: flex;
+    align-content:center;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.nav_options > a{
+    text-decoration: none;
+    color: rgb(10, 0, 0);
+}
+
+.nav_options{
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+}
