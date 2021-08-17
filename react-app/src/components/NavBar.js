@@ -26,7 +26,7 @@ const NavBar = () => {
             </button>
         </div>
         <div className='nav_options'>
-          {user ? <LogoutButton/> :
+          {user ? null :
             <>
             <>
             <NavLink to='/login' exact={true} activeClassName='active'>
@@ -43,35 +43,24 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-    {optionsOn ? <OptionsTab setOptionsOn={setOptionsOn}/> : null}
+    <div className="sidebar" style={!optionsOn ? {transform: 'translateX(-110%)'} : {}}>
+      <div>
+        <button className="arrow-button" onClick={()=> setOptionsOn(!optionsOn)}>
+          <i className="fas fa-arrow-left"></i>
+        </button>
+      </div>
+      <div>
+        <div>
+          {user ? user.username : 'log In!'}
+        </div>
+        <div>
+          {user? <LogoutButton/> : 'more features coming soon!'}
+        </div>
+      </div>
+    </div>
     </>
   );
 }
 
-function OptionsTab({ setOptionsOn }){
-  const [showOptions, set] = useState(false);
-
-  return (
-    <>
-
-    <div
-      className="sidebar"
-      style={showOptions ? { transform: 'translateX(-100%)' } : {}}
-    >
-      <div className='test'>
-        <button
-          className="arrow-button"
-          onClick={() => setOptionsOn(false)}>
-          <i className="fas fa-arrow-right"></i>
-        </button>
-      </div>
-      <div>
-        <p>name</p>
-        <p>logout</p>
-      </div>
-    </div>
-    </>
-  )
-}
 
 export default NavBar;
