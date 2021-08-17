@@ -4,7 +4,7 @@ import { fetchAllProducts } from '../../store/products';
 import './Homepage.css'
 import { Link } from 'react-router-dom';
 
-function ProductList() {
+function HomePage() {
     const dispatch = useDispatch();
     const products = Object.values(useSelector((state) => state.products));
 
@@ -36,4 +36,4 @@ function ProductList() {
     )
 }
 
-export default ProductList
+export default HomePage

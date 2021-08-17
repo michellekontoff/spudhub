@@ -10,7 +10,7 @@ import User from './components/User';
 import ProductPage from './components/Products/ProductPage';
 import { authenticate } from './store/session';
 import { fetchAllProducts } from './store/products';
-import ProductList from './components/Home/Homepage';
+import HomePage from './components/Home/Homepage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -47,9 +47,9 @@ function App() {
         <Route path='/products/:productId' exact={true} >
           <ProductPage />
         </Route>
-        <ProtectedRoute path='/' exact={true} >
-          <ProductList />
-        </ProtectedRoute>
+        <Route path='/' exact={true} >
+          <HomePage />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

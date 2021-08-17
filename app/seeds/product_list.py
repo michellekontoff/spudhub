@@ -2,7 +2,7 @@ products = [
     "acorn_squash",
     "apple",
     "artichoke",
-    "asaparagus",
+    "asparagus",
     "avocado",
     "bella_mushroom",
     "bokchoy",
