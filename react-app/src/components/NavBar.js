@@ -43,13 +43,13 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-    {optionsOn ? <OptionsTab/> : null}
+    {optionsOn ? <OptionsTab setOptionsOn={setOptionsOn}/> : null}
     </>
   );
 }
 
-function OptionsTab(){
-  const [showOptions, setShowOptions] = useState(false);
+function OptionsTab({ setOptionsOn }){
+  const [showOptions, set] = useState(false);
 
   return (
     <>
@@ -61,7 +61,7 @@ function OptionsTab(){
       <div className='test'>
         <button
           className="arrow-button"
-          onClick={() => setShowOptions(true)}>
+          onClick={() => setOptionsOn(false)}>
           <i className="fas fa-arrow-right"></i>
         </button>
       </div>
