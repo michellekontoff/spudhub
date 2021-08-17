@@ -2,6 +2,7 @@ from flask import Blueprint, request
 from app.models import Product, db
 from datetime import date, datetime
 from app.forms.product_create_form import ProductCreateForm
+from app.forms.product_edit_form import ProductEditForm
 product_routes = Blueprint("products", __name__)
 
 @product_routes.route("/")
@@ -23,25 +24,30 @@ def create_product():
         # TODO: redirect to new page after new product is created
 
 
-@product_routes.route('/<int:id>', methods=['GET', 'PUT'])
+@product_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def product_page(id):
     product = Product.query.filter(Product.id == id).first()
+
     if request.method == 'GET':
         return product.to_dict()
+
     elif request.method == 'PUT':
-        new_data =request.get_json()
-        product._name = new_data['name']
-        product.description = new_data['description']
-        product.price = new_data['price']
-        product.quantity = new_data['quantity']
-        product.image = new_data['image']
-        product.updated_at = datetime.now()
+        form = ProductEditForm()
+        if form.validate_on_submit:
+            new_data = form.data
+        # new_data =request.get_json()
+            product._name = new_data['name']
+            product.description = new_data['description']
+            product.price = new_data['price']
+            product.quantity = new_data['quantity']
+            product.image = new_data['image']
+            product.updated_at = datetime.now()
 
-        db.session.add(product)
-        db.session.commit()
+            db.session.add(product)
+            db.session.commit()
         return product.to_dict()
-    else :
-        return ''
 
-
-
+    elif request.method == 'DELETE':
+        db.session.delete(product)
+        db.session.commit()
+        return 'Sucessful Deletion'
