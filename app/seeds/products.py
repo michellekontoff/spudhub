@@ -1,6 +1,6 @@
 from app.models import db, Product
 from datetime import datetime
-from app.list import products
+from app.seeds.product_list import products
 import random
 
 
