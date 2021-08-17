@@ -83,8 +83,7 @@ export const fetchEditProduct = (id, name, description, price, quantity, image) 
 
 export const fetchDeleteProduct = (id) => async (dispatch) => {
     const response = await fetch(`/api/products/${id}`, {
-        method: "DELETE",
-        headers: { 'Content-Type': "application/json" }
+        method: "DELETE"
     })
 
     if (response.ok) {
@@ -111,7 +110,7 @@ export default function reducer(state = initialState, action) {
             newState[action.product.id] = action.product
             return newState
         case DELETE_PRODUCT:
-            delete newState[action.product.id]
+            delete newState[action.productId]
             return newState
         default:
             return state;

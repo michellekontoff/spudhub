@@ -36,6 +36,7 @@ const ProductEditForm = () => {
 
   const submitDelete = async(e)=>{
        await dispatch(fetchDeleteProduct(product.id))
+       return <Redirect to='/'/>
 
   }
 
