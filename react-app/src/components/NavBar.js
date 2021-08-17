@@ -28,7 +28,7 @@ const NavBar = () => {
         </div>
         <div className='nav_options'>
           {user ? <>
-            <button className='nav_sidebar_icons nav_cart_icon'>
+            <button className='nav_sidebar_icons nav_cart_icon' onClick={() => setCart(!cart)}>
               <i className="fas fa-shopping-cart" />
             </button>
           </>
@@ -67,14 +67,14 @@ const NavBar = () => {
 
 
 
-    <div className="sidebar" style={!optionsOn ? {transform: 'translateX(-100%)'} : {}}>
-      <div className='sidebar_container'>
-        <div className="arrow-button" onClick={()=> setOptionsOn(!optionsOn)}>
-          <i className="fas fa-arrow-left"></i>
+    <div className="shopping_cart_bar" style={!cart ? {transform: 'translateX(-100%)'} : {}}>
+      <div className='cart_container'>
+        <div className="arrow-button" onClick={()=> setCart(!cart)}>
+          <i className="fas fa-arrow-right"></i>
         </div>
-        <div className='sidebar_userInfo'>
+        <div className='cart_userInfo'>
           <div>
-            {user? <LogoutButton/> : 'More features coming soon!'}
+            More features coming soon!
           </div>
         </div>
       </div>
