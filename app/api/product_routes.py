@@ -9,15 +9,13 @@ def products():
     products = Product.query.all()
     return {product.to_dict()['id']: product.to_dict() for product in products}
 
+
 @product_routes.route("/create",methods=['POST'])
 def create_product():
-
     form=ProductCreateForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
-        print('------------')
-        print(data)
         new_product = Product(user_id=data['user_id'], name=data['name'] , description=data['description'], price= data['price'], quantity= data['quantity'] , image=data['image'],created_at = datetime.now(), updated_at= datetime.now())
         db.session.add(new_product)
         db.session.commit()
