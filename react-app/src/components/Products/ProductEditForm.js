@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
-import { Redirect , useParams } from 'react-router-dom';
+import { Redirect , useHistory, useParams } from 'react-router-dom';
 import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
 
 /*
@@ -15,7 +15,6 @@ const ProductEditForm = () => {
 
   const params = useParams()
   const product = useSelector(state => state.products[params.id])
-
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
@@ -24,6 +23,7 @@ const ProductEditForm = () => {
   const [image , setImage] = useState(product.image)
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +34,9 @@ const ProductEditForm = () => {
 
   };
 
-  const submitDelete = async(e)=>{
-       await dispatch(fetchDeleteProduct(product.id))
-       return <Redirect to='/'/>
-
+  const submitDelete = () =>{
+    dispatch(fetchDeleteProduct(product.id))
+    history.push(`/`)
   }
 
   const updateName = (e) => {

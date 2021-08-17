@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAllProducts } from '../../store/products';
+// import { fetchAllProducts } from '../../store/products';
 import './Homepage.css'
 import { Link } from 'react-router-dom';
 
@@ -10,9 +10,9 @@ function HomePage() {
 
     const user = useSelector(state => state.session.user);
 
-    useEffect(() => {
-        dispatch(fetchAllProducts());
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchAllProducts());
+    // }, [dispatch])
 
     return (
         <div>

@@ -12,6 +12,7 @@ import HomePage from './components/Home/Homepage';
 import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
+import { fetchAllProducts } from './store/products';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
+      await dispatch(fetchAllProducts());
       setLoaded(true);
     })();
   }, [dispatch]);
