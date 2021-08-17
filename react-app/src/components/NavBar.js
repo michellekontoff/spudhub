@@ -65,11 +65,10 @@ function OptionsTab(){
           <i className="fas fa-arrow-right"></i>
         </button>
       </div>
-      <div style={showOptions ? { marginLeft: '10px' } : {}} >
+      <div>
         <p>name</p>
         <p>logout</p>
       </div>
-
     </div>
     </>
   )
