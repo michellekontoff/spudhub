@@ -1,0 +1,41 @@
+#modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modal-background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#modal-content {
+    position: absolute;
+    background-color:white;
+    border-radius: 6px;
+    width: 70vw;
+    height: 90%;
+    max-width: 800px;
+    max-height: 80vw;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: auto;
+}
+
+@media (max-width: 700px) {
+    #modal-content {
+        width: 80%;
+    }
+}
