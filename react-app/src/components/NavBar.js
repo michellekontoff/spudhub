@@ -49,22 +49,27 @@ const NavBar = () => {
 }
 
 function OptionsTab(){
-  const [showOptions, setShowOptions] = useState(true);
+  const [showOptions, setShowOptions] = useState(false);
 
   return (
     <>
-    <div style={showOptions ? { marginLeft: '300px' } : {}} >
-      <p>name</p>
-      <p>logout</p>
-    </div>
+
     <div
+      className="sidebar"
       style={showOptions ? { transform: 'translateX(-100%)' } : {}}
     >
       <div className='test'>
-      <button className="arrow-button" onClick={() => setShowOptions(false)}>
-        <i className="fas fa-arrow-right"></i> hide
-      </button>
+        <button
+          className="arrow-button"
+          onClick={() => setShowOptions(true)}>
+          <i className="fas fa-arrow-right"></i>
+        </button>
       </div>
+      <div style={showOptions ? { marginLeft: '10px' } : {}} >
+        <p>name</p>
+        <p>logout</p>
+      </div>
+
     </div>
     </>
   )
