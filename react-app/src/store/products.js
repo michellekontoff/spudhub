@@ -82,16 +82,18 @@ export const fetchEditProduct = (id, name, description, price, quantity, image) 
 }
 
 export const fetchDeleteProduct = (id) => async (dispatch) => {
-    const response = await fetch(`/api/products/${id}`, {
+    const response= await fetch(`/api/products/${id}`, {
         method: "DELETE"
     })
-
+    console.log(response)
     if (response.ok) {
         const data = await response.json()
+        console.log("Delete id : ", id)
         if (data.errors) {
             return;
         }
         dispatch(deleteProduct(id))
+        return response
     }
 
 }

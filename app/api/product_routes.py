@@ -50,4 +50,4 @@ def product_page(id):
     elif request.method == 'DELETE':
         db.session.delete(product)
         db.session.commit()
-        return 'Sucessful Deletion'
+        return {"deletion":"successful"}
