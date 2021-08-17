@@ -8,6 +8,8 @@ function HomePage() {
     const dispatch = useDispatch();
     const products = Object.values(useSelector((state) => state.products));
 
+    const user = useSelector(state => state.session.user);
+
     useEffect(() => {
         dispatch(fetchAllProducts());
     }, [dispatch])
@@ -19,9 +21,12 @@ function HomePage() {
                 <ul className="list">
                     {products.map((product) => (
                         <div className='product-container'>
-                            <button className='plus-btn'>
-                                <i className="fas fa-plus"></i>
-                            </button>
+                            {user ?
+                                <button className='plus-btn'>
+                                    <i className="fas fa-plus"></i>
+                                </button>
+                                : null
+                            }
                             {/* Link to={`/products/${product.id}`} */}
                             <li className="product">
                                 <img src={product.image} alt={product.id}></img>

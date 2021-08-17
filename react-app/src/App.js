@@ -9,7 +9,6 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import ProductPage from './components/Products/ProductPage';
 import { authenticate } from './store/session';
-import { fetchAllProducts } from './store/products';
 import HomePage from './components/Home/Homepage';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 
@@ -20,7 +19,6 @@ function App() {
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
-      await dispatch(fetchAllProducts());
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -45,12 +43,12 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <Route path='/products/:productId' exact={true} >
-          <ProductPage />
-        </Route>
         <ProtectedRoute path='/products/create' exact={true}>
           <ProductCreateForm />
         </ProtectedRoute>
+        <Route path='/products/:productId' exact={true} >
+          <ProductPage />
+        </Route>
         <Route path='/' exact={true} >
           <HomePage />
         </Route>

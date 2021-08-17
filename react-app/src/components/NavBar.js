@@ -57,11 +57,14 @@ const NavBar = () => {
             <p>
             {user ? 'Email:  ' + user.email : 'Or sign up to see more!'}
             </p>
+            <p>
+              {user ?
+                <Link to='/products/create' onClick={() => setOptionsOn(!optionsOn)}>Create New Product Listing!</Link>
+                : null
+              }
+            </p>
           </div>
-          <div>
-            <Link to="/product/create">Create New Product Listing</Link>
-          </div>
-          <div>
+          <div onClick={()=> setOptionsOn(!optionsOn)}>
             {user? <LogoutButton/> : 'More features coming soon!'}
           </div>
         </div>
