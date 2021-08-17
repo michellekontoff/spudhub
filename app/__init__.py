@@ -30,10 +30,10 @@ def load_user(id):
 # Tell flask about our seed commands
 app.cli.add_command(seed_commands)
 
-db.init_app(app)
-Migrate(app, db)
 
 app.config.from_object(Config)
+db.init_app(app)
+Migrate(app, db)
 app.register_blueprint(test, url_prefix='/api/test')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')

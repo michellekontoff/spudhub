@@ -24,9 +24,7 @@ let initialState = {}
 export default function reducer(state = initialState, action) {
     switch (action.type) {
       case ALL_PRODUCTS:
-            const allProducts = {};
-            action.products.products.forEach(product => allProducts[product.id] = product)
-            return { ...state, ...allProducts };
+            return { ...state, ...action.products };
     //   case REMOVE_USER:
     //     return { user: null }
       default:
