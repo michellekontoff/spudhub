@@ -18,6 +18,53 @@ class Product(db.Model):
 
     reviews = db.relationship("Review", backref=db.backref("products"), lazy=True )
 
+    @property
+    def _name(self):
+        return self.name
+
+    @_name.setter
+    def _name(self, name):
+        self.name = name
+
+    @property
+    def _description(self):
+        return self.description
+
+    @_description.setter
+    def _description(self, description):
+        self.description = description
+
+    @property
+    def _price(self):
+        return self.price
+
+    @_price.setter
+    def _price(self, price):
+        self.price = price
+
+    @property
+    def _quantity(self):
+        return self.quantity
+
+    @_quantity.setter
+    def _quantity(self, quantity):
+        self.quantity = quantity
+
+    @property
+    def _image(self):
+        return self.image
+
+    @_image.setter
+    def _image(self, image):
+        self.image = image
+
+    @property
+    def _updated_at(self):
+        return self.updated_at
+
+    @_updated_at.setter
+    def _updated_at(self, updated_at):
+        self.updated_at = updated_at
 
 
     def to_dict(self):

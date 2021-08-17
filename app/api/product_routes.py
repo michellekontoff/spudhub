@@ -21,3 +21,27 @@ def create_product():
         db.session.commit()
         return new_product.to_dict()
         # TODO: redirect to new page after new product is created
+
+
+@product_routes.route('/<int:id>', methods=['GET', 'PUT'])
+def product_page(id):
+    product = Product.query.filter(Product.id == id).first()
+    if request.method == 'GET':
+        return product.to_dict()
+    elif request.method == 'PUT':
+        new_data =request.get_json()
+        product._name = new_data['name']
+        product.description = new_data['description']
+        product.price = new_data['price']
+        product.quantity = new_data['quantity']
+        product.image = new_data['image']
+        product.updated_at = datetime.now()
+
+        db.session.add(product)
+        db.session.commit()
+        return product.to_dict()
+    else :
+        return ''
+
+
+
