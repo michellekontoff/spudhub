@@ -35,13 +35,8 @@ const LoginForm = () => {
     <>
     <form onSubmit={onLogin} className="login-form">
       <div className="login-header">Login</div>
-      <div className='errors'>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
       <div>
-        {/* <label htmlFor='email'>Email</label> */}
+        <p>{errors?.email}</p>
         <input
           name='email'
           type='text'
@@ -51,7 +46,7 @@ const LoginForm = () => {
         />
       </div>
       <div>
-        {/* <label htmlFor='password'>Password</label> */}
+        <p>{errors?.password}</p>
         <input
           name='password'
           type='password'
@@ -59,7 +54,9 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button className='modal-login-btn' type='submit'>Login</button>
+      </div>
+      <div>
+      <button className='modal-login-btn' type='submit'>Login</button>
       </div>
     </form>
     </>
