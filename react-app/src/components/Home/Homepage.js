@@ -27,12 +27,13 @@ function HomePage() {
                                 </button>
                                 : null
                             }
-                            {/* Link to={`/products/${product.id}`} */}
-                            <li className="product">
-                                <img src={product.image} alt={product.id}></img>
-                                <div>{product.name}</div>
-                                <div>${product.price}</div>
-                            </li>
+                            <Link to={`/products/${product.id}`}>
+                                <li className="product">
+                                    <img src={product.image} alt={product.id}></img>
+                                    <div>{product.name}</div>
+                                    <div>${product.price}</div>
+                                </li>
+                            </Link>
                         </div>
                     ))}
                 </ul>

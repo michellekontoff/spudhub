@@ -34,9 +34,13 @@ nav{
     cursor: pointer;
 }
 
-.nav_options > a{
+.nav_options > .nav-btn {
     text-decoration: none;
     color:white;
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 .nav_options{
@@ -48,6 +52,7 @@ nav{
 
 .nav_cart_icon{
     margin-left: 70%;
+
 }
 
 .sidebar {

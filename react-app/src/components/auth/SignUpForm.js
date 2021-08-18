@@ -44,51 +44,58 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
+    <>
+    <form onSubmit={onSignUp} className="signup-form">
+      <div className='signup-header'>Sign Up</div>
+      <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
       </div>
       <div>
-        <label>User Name</label>
+        {/* <label>User Name</label> */}
         <input
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
+          placeholder='Username'
         ></input>
       </div>
       <div>
-        <label>Email</label>
+        {/* <label>Email</label> */}
         <input
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
+          placeholder='Email'
         ></input>
       </div>
       <div>
-        <label>Password</label>
+        {/* <label>Password</label> */}
         <input
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
+          placeholder='Password'
         ></input>
       </div>
       <div>
-        <label>Repeat Password</label>
+        {/* <label>Repeat Password</label> */}
         <input
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
+          placeholder='Confirm Password'
         ></input>
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className='modal-signup-btn' type='submit'>Sign Up</button>
     </form>
+    </>
   );
 };
 
