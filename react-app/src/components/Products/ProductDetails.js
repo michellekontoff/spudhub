@@ -4,16 +4,21 @@ import { useParams } from 'react-router-dom';
 
 
 
-const ProductDetails = ({user, product, editMode, setEditMode}) =>{
+const ProductDetails = ({userId, product, editMode, setEditMode}) =>{
+    let editButton ;
+
+    if ( userId === product.user_id){
+        editButton = <button type='button' onClick={()=> setEditMode(true)}>Edit</button>
+    }
 
     return (
         <>
         <h1>{product.name}</h1>
-        <p>{user}</p>
+        <p>{userId}</p>
         <p>{product.description}</p>
         <p>{product.price}</p>
         <p>{product.quantity}</p>
-        <button type='button' onClick={()=> setEditMode(true)}>Edit</button>
+        {editButton}
 
         </>
     )
