@@ -1,4 +1,13 @@
-
+.errors {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95px;
+    top: 30px;
+    color: red;
+    margin: 10px 5px 10px 5px;
+    position: absolute;
+}
 
 form {
     display: flex;
@@ -24,13 +33,13 @@ form {
 .signup-form {
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .login-form  input, .modal-login-btn {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    margin-top: 10px;
+    margin-top: 30px;
     font-family: "Open Sans", Arial, sans-serif;
     border-radius: 6px;
     border: solid .5px rgb(150, 149, 149);
@@ -43,8 +52,7 @@ form {
 .signup-form  input, .modal-signup-btn {
     display: flex;
     flex-direction: column;
-    margin: auto;
-    margin-top: 10px;
+    margin-top: 30px;
     font-family: "Open Sans", Arial, sans-serif;
     border-radius: 6px;
     border: solid .5px rgb(150, 149, 149);
