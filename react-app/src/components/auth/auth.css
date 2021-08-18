@@ -33,18 +33,25 @@ form {
 .signup-form {
     display: flex;
     flex-direction: column;
+    text-align: center;
     position: relative;
+    width: 300px;
+    height: auto;
+    padding: 10px;
 }
 
-.login-form  input, .modal-login-btn {
-    display: flex;
-    flex-direction: column;
-    margin-top: 30px;
+.login-form div{
+    margin-top: 5px;
+    color: red;
+}
+
+
+.login-form  input{
     font-family: "Open Sans", Arial, sans-serif;
     border-radius: 6px;
     border: solid .5px rgb(150, 149, 149);
-    width: 300px;
-    height: 40px;
+    width: 200px;
+    height: 35px;
     font-size: 15px;
     padding-left: 10px;
 }
@@ -64,15 +71,16 @@ form {
 
 .modal-login-btn,
 .modal-signup-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     border: none;
     background-color: yellowgreen;
     color: white;
-    width: 315px;
-    text-align: center;
+    width: 215px;
     font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 .login-header,
