@@ -34,7 +34,7 @@ nav{
     cursor: pointer;
 }
 
-.nav_options > button{
+.nav_options > .nav-btn {
     text-decoration: none;
     color:white;
     background-color: transparent;
@@ -52,6 +52,7 @@ nav{
 
 .nav_cart_icon{
     margin-left: 70%;
+
 }
 
 .sidebar {

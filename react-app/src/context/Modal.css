@@ -22,8 +22,9 @@
     position: absolute;
     background-color:white;
     border-radius: 6px;
-    width: 70vw;
-    height: 90%;
+    width: 50vw;
+    min-width: 400px;
+    height: 60%;
     max-width: 800px;
     max-height: 80vw;
     overflow-y: auto;
@@ -34,8 +35,8 @@
     padding: auto;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
     #modal-content {
-        width: 80%;
+        width: 70%;
     }
 }

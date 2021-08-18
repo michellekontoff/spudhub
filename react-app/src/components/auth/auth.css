@@ -1,6 +1,12 @@
 
 
-.logout-btn{
+form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.logout-btn {
     background-color: red;
     color: white;
     border: none;
@@ -10,7 +16,58 @@
     cursor: pointer;
 }
 
-.logout-btn:hover{
+.logout-btn:hover {
     box-shadow: 2.25px 2.25px 2.25px 2.25px lightgray;
 }
 
+.login-form,
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form  .input, .modal-login-btn {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10px;
+    font-family: "Open Sans", Arial, sans-serif;
+    border-radius: 6px;
+    border: solid .5px rgb(150, 149, 149);
+    width: 30vw;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.signup-form  .input, .modal-signup-btn {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10px;
+    font-family: "Open Sans", Arial, sans-serif;
+    border-radius: 6px;
+    border: solid .5px rgb(150, 149, 149);
+    width: 30vw;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.modal-login-btn,
+.modal-signup-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: yellowgreen;
+    color: white;
+    width: 31vw;
+    text-align: center;
+    font-size: 20px;
+}
+
+.login-header,
+.signup-header {
+    font-size: 30px;
+}
