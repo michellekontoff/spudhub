@@ -41,12 +41,12 @@ def product_page(id):
         if form.validate_on_submit():
             new_data = form.data
         # new_data =request.get_json()
-            product._name = new_data['name']
-            product._description = new_data['description']
-            product._price = new_data['price']
-            product._quantity = new_data['quantity']
-            product._image = new_data['image']
-            product._updated_at = datetime.now()
+            product.name = new_data['name']
+            product.description = new_data['description']
+            product.price = new_data['price']
+            product.quantity = new_data['quantity']
+            product.image = new_data['image']
+            product.updated_at = datetime.now()
 
             db.session.add(product)
             db.session.commit()

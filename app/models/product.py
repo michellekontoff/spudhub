@@ -18,53 +18,55 @@ class Product(db.Model):
 
     reviews = db.relationship("Review", backref=db.backref("products"), lazy=True )
 
-    @property
-    def _name(self):
-        return self.name
 
-    @_name.setter
-    def _name(self, name):
-        self.name = name
+# Getters & Setters
+    # @property
+    # def _name(self):
+    #     return self.name
 
-    @property
-    def _description(self):
-        return self.description
+    # @_name.setter
+    # def _name(self, name):
+    #     self.name = name
 
-    @_description.setter
-    def _description(self, description):
-        self.description = description
+    # @property
+    # def _description(self):
+    #     return self.description
 
-    @property
-    def _price(self):
-        return self.price
+    # @_description.setter
+    # def _description(self, description):
+    #     self.description = description
 
-    @_price.setter
-    def _price(self, price):
-        self.price = price
+    # @property
+    # def _price(self):
+    #     return self.price
 
-    @property
-    def _quantity(self):
-        return self.quantity
+    # @_price.setter
+    # def _price(self, price):
+    #     self.price = price
 
-    @_quantity.setter
-    def _quantity(self, quantity):
-        self.quantity = quantity
+    # @property
+    # def _quantity(self):
+    #     return self.quantity
 
-    @property
-    def _image(self):
-        return self.image
+    # @_quantity.setter
+    # def _quantity(self, quantity):
+    #     self.quantity = quantity
 
-    @_image.setter
-    def _image(self, image):
-        self.image = image
+    # @property
+    # def _image(self):
+    #     return self.image
 
-    @property
-    def _updated_at(self):
-        return self.updated_at
+    # @_image.setter
+    # def _image(self, image):
+    #     self.image = image
 
-    @_updated_at.setter
-    def _updated_at(self, updated_at):
-        self.updated_at = updated_at
+    # @property
+    # def _updated_at(self):
+    #     return self.updated_at
+
+    # @_updated_at.setter
+    # def _updated_at(self, updated_at):
+    #     self.updated_at = updated_at
 
 
     def to_dict(self):
