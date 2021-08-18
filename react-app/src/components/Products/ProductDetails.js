@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 
 
-const ProductDetails = ({user, product}) =>{
+const ProductDetails = ({user, product, editMode, setEditMode}) =>{
 
     return (
         <>
@@ -13,6 +13,7 @@ const ProductDetails = ({user, product}) =>{
         <p>{product.description}</p>
         <p>{product.price}</p>
         <p>{product.quantity}</p>
+        <button type='button' onClick={()=> setEditMode(true)}>Edit</button>
 
         </>
     )

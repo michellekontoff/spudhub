@@ -11,10 +11,10 @@ TODO:
 
 
 
-const ProductEditForm = () => {
+const ProductEditForm = ({product, editMode , setEditMode}) => {
 
-  const params = useParams()
-  const product = useSelector(state => state.products[params.id])
+
+
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
@@ -31,7 +31,7 @@ const ProductEditForm = () => {
       if (data) {
         setErrors(data)
       }
-    history.push(`/`)
+    setEditMode(false)
   };
 
   const submitDelete = () =>{
