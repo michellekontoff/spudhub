@@ -77,6 +77,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           name='name'
           onChange={updateName}
           value={name}
+          required
         ></input>
       </div>
       <div>
@@ -85,6 +86,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           name='description'
           onChange={updateDescription}
           value={description}
+          required
         ></textarea>
       </div>
       <div>
@@ -94,6 +96,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           name='price'
           onChange={updatePrice}
           value={price}
+          required
         ></input>
       </div>
       <div>
@@ -103,6 +106,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           name='quantity'
           onChange={updateQuantity}
           value={quantity}
+          required
         ></input>
       </div>
       <div>
