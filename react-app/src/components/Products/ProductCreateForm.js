@@ -27,7 +27,8 @@ const ProductCreateForm = () => {
     e.preventDefault();
       const data = await dispatch(fetchCreateProduct(user_id ,name, description, price,quantity,image));
       if (data) {
-        setErrors(data)
+        console.log(data)
+        setErrors(Object.values(data))
       }
 
   };
@@ -58,10 +59,10 @@ const ProductCreateForm = () => {
     <form
     onSubmit={onSubmit}
     >
-      <div>
-        {/* {errors.map((error, ind) => (
+      <div className='errors'>
+        {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
-        ))} */}
+        ))}
       </div>
       <div>
         <label>Name</label>
@@ -70,6 +71,7 @@ const ProductCreateForm = () => {
           name='name'
           onChange={updateName}
           value={name}
+          required
         ></input>
       </div>
       <div>
@@ -78,6 +80,7 @@ const ProductCreateForm = () => {
           name='description'
           onChange={updateDescription}
           value={description}
+          required
         ></textarea>
       </div>
       <div>
@@ -87,6 +90,7 @@ const ProductCreateForm = () => {
           name='price'
           onChange={updatePrice}
           value={price}
+          required
         ></input>
       </div>
       <div>
@@ -96,6 +100,7 @@ const ProductCreateForm = () => {
           name='quantity'
           onChange={updateQuantity}
           value={quantity}
+          required
         ></input>
       </div>
       <div>
@@ -105,6 +110,7 @@ const ProductCreateForm = () => {
           name='image'
           onChange={updateImage}
           value={image}
+
         ></input>
       </div>
       <button type='submit'>Create Product</button>

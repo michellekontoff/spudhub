@@ -11,10 +11,10 @@ TODO:
 
 
 
-const ProductEditForm = () => {
+const ProductEditForm = ({product, editMode , setEditMode}) => {
 
-  const params = useParams()
-  const product = useSelector(state => state.products[params.id])
+
+
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
@@ -31,7 +31,7 @@ const ProductEditForm = () => {
       if (data) {
         setErrors(data)
       }
-    history.push(`/`)
+    setEditMode(false)
   };
 
   const submitDelete = () =>{
@@ -77,6 +77,7 @@ const ProductEditForm = () => {
           name='name'
           onChange={updateName}
           value={name}
+          required
         ></input>
       </div>
       <div>
@@ -85,6 +86,7 @@ const ProductEditForm = () => {
           name='description'
           onChange={updateDescription}
           value={description}
+          required
         ></textarea>
       </div>
       <div>
@@ -94,6 +96,7 @@ const ProductEditForm = () => {
           name='price'
           onChange={updatePrice}
           value={price}
+          required
         ></input>
       </div>
       <div>
@@ -103,6 +106,7 @@ const ProductEditForm = () => {
           name='quantity'
           onChange={updateQuantity}
           value={quantity}
+          required
         ></input>
       </div>
       <div>
