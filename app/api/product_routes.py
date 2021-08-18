@@ -22,8 +22,8 @@ def create_product():
         db.session.commit()
         return new_product.to_dict()
     else:
-        print(form.errors)
-        return {'errors':form.errors}, 500
+
+        return {'errors':form.errors},500
 
         # TODO: redirect to new page after new product is created
 
@@ -37,22 +37,22 @@ def product_page(id):
 
     elif request.method == 'PUT':
         form = ProductEditForm()
-        if form.validate_on_submit:
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
             new_data = form.data
         # new_data =request.get_json()
             product._name = new_data['name']
-            product.description = new_data['description']
-            product.price = new_data['price']
-            product.quantity = new_data['quantity']
-            product.image = new_data['image']
-            product.updated_at = datetime.now()
+            product._description = new_data['description']
+            product._price = new_data['price']
+            product._quantity = new_data['quantity']
+            product._image = new_data['image']
+            product._updated_at = datetime.now()
 
             db.session.add(product)
             db.session.commit()
             return product.to_dict()
         else:
-            print(form.errors)
-            return {'errors':form.errors}
+            return {'errors':form.errors},500
 
     elif request.method == 'DELETE':
         db.session.delete(product)
