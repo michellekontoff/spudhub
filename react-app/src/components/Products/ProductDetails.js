@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom';
-
+import './Product.css'
 
 
 const ProductDetails = ({userId, product, editMode, setEditMode}) =>{
@@ -12,15 +12,16 @@ const ProductDetails = ({userId, product, editMode, setEditMode}) =>{
     }
 
     return (
-        <>
-        <h1>{product.name}</h1>
-        <p>{userId}</p>
-        <p>{product.description}</p>
-        <p>{product.price}</p>
-        <p>{product.quantity}</p>
-        {editButton}
 
-        </>
+        <div className='product-details-container'>
+            <h1 className='product-header'>{product.name}</h1>
+            <div className="product-img-container"><img src={product.image} alt={product.name}></img></div>
+            <div className='product-description'>{product.description}</div>
+            <div className='product-price'>{product.price}</div>
+            <div className='product-quantity'>{product.quantity}</div>
+            <div className='product-edit-btn'>{editButton}</div>
+        </div>
+
     )
 
 
