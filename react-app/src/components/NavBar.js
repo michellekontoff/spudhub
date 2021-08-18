@@ -41,7 +41,7 @@ const NavBar = () => {
           </>
           : <>
             <>
-              <button className="home-login" onClick={() => setShowLoginModal(true)}>Log In</button>
+              <button  onClick={() => setShowLoginModal(true)}>Log In</button>
               {showLoginModal && (
                 <Modal onClose={() => setShowLoginModal(false)}>
                   <LoginForm />
@@ -49,7 +49,7 @@ const NavBar = () => {
               )}
             </>
             <>
-              <button className="home-login" onClick={() => setShowSignUpModal(true)}>Sign Up</button>
+              <button onClick={() => setShowSignUpModal(true)}>Sign Up</button>
               {showSignUpModal && (
                 <Modal onClose={() => setShowSignUpModal(false)}>
                   <SignUpForm />
@@ -82,7 +82,7 @@ const NavBar = () => {
             </p>
           </div>
           <div onClick={()=> setOptionsOn(!optionsOn)}>
-            {user? <LogoutButton/> : 'More features coming soon!'}
+            {user ? <LogoutButton setShowLoginModal={setShowLoginModal} setShowSignUpModal={setShowSignUpModal} /> : 'More features coming soon!'}
           </div>
         </div>
       </div>
