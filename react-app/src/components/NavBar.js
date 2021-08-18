@@ -5,12 +5,19 @@ import { Link, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
+import { Modal } from '../context/Modal'
+import LoginForm from './auth/LoginForm';
+import SignUpForm from './auth/SignUpForm'
+
 
 const NavBar = () => {
 
   const user = useSelector(state => state.session.user);
   const [optionsOn, setOptionsOn] = useState(false);
   const [cart, setCart] = useState(true);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showSignUpModal, setShowSignUpModal] = useState(false);
+
 
   return (
     <>
@@ -33,12 +40,22 @@ const NavBar = () => {
             </button>
           </>
           : <>
-            <NavLink to='/login' exact={true} activeClassName='active'>
-              Login
-            </NavLink>
-            <NavLink to='/sign-up' exact={true} activeClassName='active'>
-              Sign Up
-            </NavLink>
+            <>
+              <button className="home-login" onClick={() => setShowLoginModal(true)}>Log In</button>
+              {showLoginModal && (
+                <Modal onClose={() => setShowLoginModal(false)}>
+                  <LoginForm />
+                </Modal>
+              )}
+            </>
+            <>
+              <button className="home-login" onClick={() => setShowSignUpModal(true)}>Sign Up</button>
+              {showSignUpModal && (
+                <Modal onClose={() => setShowSignUpModal(false)}>
+                  <SignUpForm />
+                </Modal>
+              )}
+            </>
             </>
           }
         </div>

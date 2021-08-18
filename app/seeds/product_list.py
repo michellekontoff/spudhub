@@ -41,7 +41,7 @@ products = [
     "red_onion",
     "red_potato",
     "shiitake_mushroom",
-    "spaghettie_squash",
+    "spaghetti_squash",
     "spinach",
     "squash",
     "sweet_potato",
