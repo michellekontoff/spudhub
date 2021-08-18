@@ -19,7 +19,6 @@ const SignUpForm = () => {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
         setErrors(data)
-        console.log(errors)
       }
     } else {
       setErrors({passMatch: 'Passwords do not match.'})
@@ -49,12 +48,7 @@ const SignUpForm = () => {
   return (
     <>
     <form onSubmit={onSignUp} className="signup-form">
-      <div className='signup-header'>Sign Up</div>
-      {/* <div className='errors'>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div> */}
+      <div id='signup-header'>Sign Up</div>
       <div>
         <p>{errors?.username}</p>
         <input
@@ -96,7 +90,9 @@ const SignUpForm = () => {
           placeholder='Confirm Password'
         ></input>
       </div>
-      <button className='modal-signup-btn' type='submit'>Sign Up</button>
+      <div>
+        <button className='modal-signup-btn' type='submit'>Sign Up</button>
+      </div>
     </form>
     </>
   );
