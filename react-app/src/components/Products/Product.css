@@ -1,0 +1,45 @@
+.product-details-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas:
+        "img header header"
+        "img price edit"
+        "img description description"
+        "img quantity quantity"
+    ;
+    margin: auto;
+    width: 600px;
+}
+
+.product-img-container {
+    grid-area: img;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+
+.product-img-container img {
+    width: 300px;
+}
+
+.product-header {
+    grid-area: header;
+}
+
+.product-price {
+    grid-area: price;
+}
+
+.product-quantity {
+    grid-area: quantity;
+}
+
+.product-description {
+    grid-area: description;
+    overflow-y: scroll;
+    max-width: 200px;
+}
+
+.product-edit-btn {
+    grid-area: edit;
+}
