@@ -52,7 +52,7 @@ export const fetchCreateProduct = (user_id, name, description, price, quantity, 
             image
         })
     })
-    console.log(response)
+    // console.log(response)
     const data = await response.json()
     if (response.ok) {
         dispatch(createProduct(data))
@@ -81,8 +81,7 @@ export const fetchEditProduct = (id, name, description, price, quantity, image) 
         return data
     }
     if (data.errors) {
-
-        return data.errors
+        return data
     }
 
 }

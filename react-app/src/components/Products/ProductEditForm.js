@@ -15,7 +15,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
 
 
 
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState(false);
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
@@ -28,10 +28,17 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
   const onSubmit = async (e) => {
     e.preventDefault();
       const data = await dispatch(fetchEditProduct(product.id,name, description, price,quantity,image));
-      if (data) {
-        setErrors(data)
+      if (data){
+        if (!data.errors){
+          setEditMode(false)
+        }
+        else{
+          console.log(data)
+          setErrors(data.errors)
+        }
       }
-    setEditMode(false)
+
+
   };
 
   const submitDelete = () =>{
@@ -66,11 +73,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
     onSubmit={onSubmit}
     >
       <div>
-        {/* {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))} */}
-      </div>
-      <div>
+        <p className='error'>{errors?.name}</p>
         <label>Name</label>
         <input
           type='text'
@@ -81,6 +84,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
         ></input>
       </div>
       <div>
+      <p className='error'>{errors?.description}</p>
         <label>Descripton</label>
         <textarea
           name='description'
@@ -90,6 +94,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
         ></textarea>
       </div>
       <div>
+        <p className='error'>{errors?.price}</p>
         <label>Price</label>
         <input
           type='number'
@@ -100,6 +105,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
         ></input>
       </div>
       <div>
+      <p className='error'>{errors?.quantity}</p>
         <label>Quantity</label>
         <input
           type='number'
