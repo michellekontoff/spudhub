@@ -34,7 +34,7 @@ const LoginForm = () => {
   return (
     <>
     <form onSubmit={onLogin} className="login-form">
-      <div className="login-header">Login</div>
+      <div id="login-header">Login</div>
       <div>
         <p>{errors?.email}</p>
         <input
