@@ -5,7 +5,7 @@ import {fetchCreateProduct} from '../../store/products';
 
 /*
 TODO:
-    [] error handling
+    [] styling
 */
 
 
@@ -27,8 +27,7 @@ const ProductCreateForm = () => {
     e.preventDefault();
       const data = await dispatch(fetchCreateProduct(user_id ,name, description, price,quantity,image));
       if (data) {
-        console.log(data)
-        setErrors(Object.values(data))
+        setErrors(data)
       }
 
   };
@@ -59,12 +58,13 @@ const ProductCreateForm = () => {
     <form
     onSubmit={onSubmit}
     >
-      <div className='errors'>
+      {/* <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
-      </div>
+      </div> */}
       <div>
+        <p>{errors?.name}</p>
         <label>Name</label>
         <input
           type='text'
@@ -75,7 +75,8 @@ const ProductCreateForm = () => {
         ></input>
       </div>
       <div>
-        <label>Descripton</label>
+        <p>{errors?.description}</p>
+        <label>Description</label>
         <textarea
           name='description'
           onChange={updateDescription}
@@ -84,6 +85,7 @@ const ProductCreateForm = () => {
         ></textarea>
       </div>
       <div>
+        <p>{errors?.price}</p>
         <label>Price</label>
         <input
           type='number'
@@ -94,6 +96,7 @@ const ProductCreateForm = () => {
         ></input>
       </div>
       <div>
+        <p>{errors?.quantity}</p>
         <label>Quantity</label>
         <input
           type='number'
