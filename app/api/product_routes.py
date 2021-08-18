@@ -21,6 +21,10 @@ def create_product():
         db.session.add(new_product)
         db.session.commit()
         return new_product.to_dict()
+    else:
+        print(form.errors)
+        return {'errors':form.errors}, 500
+
         # TODO: redirect to new page after new product is created
 
 
@@ -45,7 +49,10 @@ def product_page(id):
 
             db.session.add(product)
             db.session.commit()
-        return product.to_dict()
+            return product.to_dict()
+        else:
+            print(form.errors)
+            return {'errors':form.errors}
 
     elif request.method == 'DELETE':
         db.session.delete(product)

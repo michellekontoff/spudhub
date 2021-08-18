@@ -34,6 +34,7 @@ export const fetchAllProducts = () => async (dispatch) => {
         }
 
         dispatch(getAllProducts(data));
+        return data
     }
 }
 
@@ -51,12 +52,14 @@ export const fetchCreateProduct = (user_id, name, description, price, quantity, 
             image
         })
     })
+    console.log(response)
+    const data = await response.json()
     if (response.ok) {
-        const data = await response.json()
-        if (data.errors) {
-            return;
-        }
         dispatch(createProduct(data))
+        return data
+    }
+    if (data.errors) {
+        return data.errors
     }
 }
 
@@ -72,20 +75,23 @@ export const fetchEditProduct = (id, name, description, price, quantity, image) 
             image
         })
     })
+    const data = await response.json()
     if (response.ok) {
-        const data = await response.json()
-        if (data.errors) {
-            return;
-        }
         dispatch(editProduct(data))
+        return data
     }
+    if (data.errors) {
+
+        return data.errors
+    }
+
 }
 
 export const fetchDeleteProduct = (id) => async (dispatch) => {
     const response= await fetch(`/api/products/${id}`, {
         method: "DELETE"
     })
-    console.log(response)
+
     if (response.ok) {
         const data = await response.json()
         console.log("Delete id : ", id)
@@ -93,7 +99,7 @@ export const fetchDeleteProduct = (id) => async (dispatch) => {
             return;
         }
         dispatch(deleteProduct(id))
-        return response
+        return data
     }
 
 }

@@ -27,7 +27,8 @@ const ProductCreateForm = () => {
     e.preventDefault();
       const data = await dispatch(fetchCreateProduct(user_id ,name, description, price,quantity,image));
       if (data) {
-        setErrors(data)
+        console.log(data)
+        setErrors(Object.values(data))
       }
 
   };
@@ -58,7 +59,7 @@ const ProductCreateForm = () => {
     <form
     onSubmit={onSubmit}
     >
-      <div>
+      <div className='errors'>
         {errors.map((error, ind) => (
           <div key={ind}>{error}</div>
         ))}
