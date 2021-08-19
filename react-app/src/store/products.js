@@ -1,5 +1,4 @@
 
-
 const ALL_PRODUCTS = 'products/ALL_PRODUCTS';
 const CREATE_PRODUCT = 'products/CREATE_PRODUCT';
 const EDIT_PRODUCT = 'products/EDIT_PRODUCT';
@@ -52,7 +51,7 @@ export const fetchCreateProduct = (user_id, name, description, price, quantity, 
             image
         })
     })
-    // console.log(response)
+
     const data = await response.json()
     if (response.ok) {
         dispatch(createProduct(data))
@@ -93,7 +92,7 @@ export const fetchDeleteProduct = (id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
-        console.log("Delete id : ", id)
+        
         if (data.errors) {
             return;
         }

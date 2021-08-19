@@ -7,7 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
-import ProductPage from './components/Products/ProductPage';
+import ProductDetails from './components/Products/ProductDetails';
 import HomePage from './components/Home/Homepage';
 import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
@@ -51,7 +51,7 @@ function App() {
           <ProductCreateForm />
         </ProtectedRoute>
         <Route path='/products/:id' exact={true} >
-          <ProductPage  />
+          <ProductDetails  />
         </Route>
         <Route path='/products/:id/edit' exact={true} >
           <ProductEditForm />

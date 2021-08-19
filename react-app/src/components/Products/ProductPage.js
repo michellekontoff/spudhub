@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom';
-import ProductDetails from './ProductDetails'
+import ProductModal from './ProductModal'
 import ProductEditForm from './ProductEditForm'
 
+import { Modal } from '../../context/Modal'
 
 
-
-const ProductPage = () => {
+const ProductPage = ({ product, setShowProductModal }) => {
 
     const [editMode, setEditMode] = useState(false)
 
-    const params = useParams()
     const user = useSelector((state) => state.session.user)
     let userId;
-    if (user) userId =user.id
+    if (user) userId = user.id
 
-    const productId = params.id
-    const product = useSelector((state) => state.products[productId])
+    let content = null
 
     if (!editMode) {
-        return (<ProductDetails userId={userId}  product={product} editMode={editMode} setEditMode={setEditMode} />)
+        content = <ProductModal userId={userId}  product={product} editMode={editMode} setEditMode={setEditMode} />
     }
     else {
-        return (<ProductEditForm product={product} editMode={editMode} setEditMode={setEditMode} />)
+        content = <ProductEditForm product={product} editMode={editMode} setEditMode={setEditMode} />
     }
+
+    return (
+        <Modal onClose={() => setShowProductModal(false)}>
+            {content}
+        </Modal>
+    )
 }
 
 

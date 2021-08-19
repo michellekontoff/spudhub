@@ -11,7 +11,7 @@
     flex-direction: column;
     text-align: center;
     position: relative;
-    width: 300px;
+    width: 400px;
     height: auto;
     max-height: 520px;
     padding: 0px;
@@ -24,7 +24,7 @@ textarea{
     font-family: "Open Sans", Arial, sans-serif;
     border-radius: 6px;
     border: solid .5px rgb(150, 149, 149);
-    width: 200px;
+    width: 300px;
     font-size: 15px;
     padding-left: 10px;
 }
@@ -38,7 +38,7 @@ textarea{
     border: none;
     background-color: yellowgreen;
     color: white;
-    width: 215px;
+    width: 315px;
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -52,16 +52,23 @@ textarea{
     font-family: "Open Sans", Arial, sans-serif;
     border-radius: 6px;
     border: solid .5px rgb(150, 149, 149);
-    width: 200px;
+    width: 300px;
     height: 35px;
     font-size: 15px;
     padding-left: 10px;
 }
 
 input.form-price{
-    width: 140px;
+    width: 240px;
 }
 
 .create-form-header {
     font-size: 30px;
+}
+
+.edit-product-form label {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 50px;
+    padding-top: 5px;
 }

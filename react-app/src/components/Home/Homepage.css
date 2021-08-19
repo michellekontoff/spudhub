@@ -34,6 +34,7 @@ li {
     list-style-type: none;
     border-bottom: 1px solid rgb(202, 202, 202);
     padding-bottom: 5%;
+    font-size: 18px;
 }
 
 .product-container {

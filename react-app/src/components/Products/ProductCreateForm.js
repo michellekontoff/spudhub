@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
-// import { Redirect } from 'react-router-dom';
 import {fetchCreateProduct} from '../../store/products';
 import { useHistory } from 'react-router-dom';
 
 import './createForm.css'
-
-/*
-TODO:
-    [] styling
-*/
-
-
 
 
 const ProductCreateForm = () => {
@@ -19,7 +11,7 @@ const ProductCreateForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0.00);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity] = useState(1);
   const [image , setImage] = useState('')
 
   const user = useSelector(state => state.session.user);
@@ -30,7 +22,7 @@ const ProductCreateForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
       const data = await dispatch(fetchCreateProduct(user_id ,name, description, price,quantity,image));
-      console.log(data)
+
       if (data){
         if (!data.errors){
           history.push('/');
@@ -52,10 +44,6 @@ const ProductCreateForm = () => {
 
   const updatePrice= (e) => {
     setPrice(e.target.value);
-  };
-
-  const updateQuantity = (e) => {
-    setQuantity(e.target.value);
   };
 
   const updateImage = (e)=>{
@@ -105,16 +93,6 @@ const ProductCreateForm = () => {
           required
           ></input> each
       </div>
-      {/* <div>
-        <p>{errors?.quantity}</p>
-        Qty<input
-          type='number'
-          name='quantity'
-          onChange={updateQuantity}
-          value={quantity}
-          required
-          ></input>
-      </div> */}
       <div>
         <p></p>
         <input

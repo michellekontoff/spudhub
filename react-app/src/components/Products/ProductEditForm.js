@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
-import { Redirect , useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
 
-/*
-TODO:
-    [] error handling
-*/
 
 
+const ProductEditForm = () => {
 
-
-const ProductEditForm = ({product, editMode , setEditMode}) => {
-
-
+  const params = useParams()
+  const productId = params.id
+  const product = useSelector((state) => state.products[productId])
 
   const [errors, setErrors] = useState(false);
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
-  const [quantity, setQuantity] = useState(product.quantity);
+  const [quantity] = useState(product.quantity);
   const [image , setImage] = useState(product.image)
 
   const dispatch = useDispatch();
@@ -30,14 +26,12 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
       const data = await dispatch(fetchEditProduct(product.id,name, description, price,quantity,image));
       if (data){
         if (!data.errors){
-          setEditMode(false)
+          history.push(`/products/${product.id}`)
         }
-        else{
+        else {
           setErrors(data.errors)
         }
       }
-
-
   };
 
   const submitDelete = () =>{
@@ -57,10 +51,6 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
     setPrice(e.target.value);
   };
 
-  const updateQuantity = (e) => {
-    setQuantity(e.target.value);
-  };
-
   const updateImage = (e)=>{
       setImage(e.target.value);
   }
@@ -71,8 +61,9 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
     <div className='edit-form-container'>
     <form onSubmit={onSubmit} className='edit-product-form'>
       <div>
+        <label>Name</label>
         <p className='error'>{errors?.name}</p>
-        Name <input
+        <input
           type='text'
           name='name'
           onChange={updateName}
@@ -82,8 +73,9 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           ></input>
       </div>
       <div>
-      <p className='error'>{errors?.description}</p>
-        Description <textarea
+        <label>Description</label>
+        <p className='error'>{errors?.description}</p>
+        <textarea
           name='description'
           onChange={updateDescription}
           value={description}
@@ -103,19 +95,9 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           required
         ></input>
       </div>
-      {/* <div>
-      <p className='error'>{errors?.quantity}</p>
-        <label>Quantity</label>
-        <input
-          type='number'
-          name='quantity'
-          onChange={updateQuantity}
-          value={quantity}
-          required
-          ></input>
-      </div> */}
       <div>
-        Image
+        <label>Image</label>
+        <p></p>
         <input
           type='text'
           name='image'
