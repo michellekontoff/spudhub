@@ -3,6 +3,7 @@ const LOAD_CART = 'cart/LOAD_CART'
 const ADD_TO_CART = 'cart/ADD_TO_CART'
 const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 const SUBTRACT_FROM_CART = 'cart/SUBTRACT_FROM_CART'
+const RESET_CART = 'cart/RESET_CART'
 
 const loadCart = (cart) => ({
     type: LOAD_CART,
@@ -24,27 +25,22 @@ export const subtractFromCart = (itemId) => ({
     itemId
 })
 
+export const resetCart = () => ({
+    type: RESET_CART,
+})
+
 export const loadCartFromStorage = () => async(dispatch) => {
 
 }
 
 
-let initialState =
-    {
-        1: {
-            productId: 1,
-            quantity: 3
-        },
-        6: {
-            productId: 6,
-            quantity: 4
-        }
-    }
+let initialState = {}
 
 
 export default function reducer(state = initialState, action) {
     let newState = { ...state }
     let itemId;
+
     switch (action.type) {
         case LOAD_CART:
             return { ...state, ...action.products };
@@ -68,6 +64,8 @@ export default function reducer(state = initialState, action) {
             itemId = action.itemId
             delete newState[itemId]
             return newState
+        case RESET_CART:
+            return state = {}
         default:
             return state;
     }
