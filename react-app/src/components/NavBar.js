@@ -8,6 +8,7 @@ import './NavBar.css'
 import { Modal } from '../context/Modal'
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm'
+import ShoppingCart from './Cart/ShoppingCart';
 
 
 const NavBar = () => {
@@ -94,6 +95,7 @@ const NavBar = () => {
         </div>
         <div className='cart_items'>
             More features coming soon!
+            <ShoppingCart />
         </div>
       </div>
     </div>
