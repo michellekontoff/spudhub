@@ -15,6 +15,20 @@ const ShoppingCart = () => {
     console.log(cartObject)
     const itemList = Object.values(cartObject)
 
+    // const cartTotal = (itemList) => {
+
+    //     let total = 0;
+    
+    //     itemList.forEach(item => {
+    //         let product = useSelector(state => state.products[item.productId]);
+    //         let price = item.quantity * product.price;
+    
+    //         total += price;
+    //     })
+    
+    //     return total
+    // }
+
     let purchaseButton ;
     if (itemList.length){
        purchaseButton= <button onClick={()=> dispatch(resetCart())}>Purchase</button>
