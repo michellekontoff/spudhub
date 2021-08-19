@@ -1,23 +1,13 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Product.css'
-import { useSelector } from 'react-redux'
 
-
-const ProductDetails = () =>{
+const ProductModal = ({ product, userId, editMode, setEditMode }) =>{
     let editButton ;
-
-    const user = useSelector((state) => state.session.user)
-    let userId;
-    if (user) userId = user.id
-
-    const params = useParams()
-    const productId = params.id
-    const product = useSelector((state) => state.products[productId])
 
     if ( userId === product.user_id) {
         editButton = <Link to={`/products/${product.id}/edit`}>
-                        <button type='button'>Edit</button>
+                        <button type='button' onClick={()=> setEditMode(true)}>Edit</button>
                     </Link>
     }
 
@@ -38,4 +28,4 @@ const ProductDetails = () =>{
 
 }
 
-export default ProductDetails
+export default ProductModal

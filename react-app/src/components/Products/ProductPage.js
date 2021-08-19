@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux'
-// import { useParams } from 'react-router-dom';
-import ProductDetails from './ProductDetails'
+import ProductModal from './ProductModal'
 import ProductEditForm from './ProductEditForm'
 
 import { Modal } from '../../context/Modal'
@@ -15,14 +14,10 @@ const ProductPage = ({ product, setShowProductModal }) => {
     let userId;
     if (user) userId = user.id
 
-    // const params = useParams()
-    // const productId = params.id
-    // const product = useSelector((state) => state.products[productId])
-
     let content = null
 
     if (!editMode) {
-        content = <ProductDetails userId={userId}  product={product} editMode={editMode} setEditMode={setEditMode} />
+        content = <ProductModal userId={userId}  product={product} editMode={editMode} setEditMode={setEditMode} />
     }
     else {
         content = <ProductEditForm product={product} editMode={editMode} setEditMode={setEditMode} />

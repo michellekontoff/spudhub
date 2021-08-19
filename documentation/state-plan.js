@@ -8,7 +8,7 @@
 
 
 
-/* 
+/*
     User makes a new order.
     1) We create a new order entry in the orders table.
         - This will pull user_id from the session user.
@@ -27,7 +27,7 @@
             order_id: 42,
             product_id: 1,
             quantity: 3
-        
+
         ORDER DETAIL:
             order_id: 42,
             product_id: 6,
@@ -88,4 +88,4 @@ store =
         }
     }
 
-console.log(store)
+

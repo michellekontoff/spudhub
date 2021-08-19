@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
-import { Redirect , useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
 
 
 
-const ProductEditForm = ({ editMode , setEditMode }) => {
+const ProductEditForm = () => {
 
   const params = useParams()
   const productId = params.id
@@ -15,7 +15,7 @@ const ProductEditForm = ({ editMode , setEditMode }) => {
   const [name, setName] = useState(product.name);
   const [description, setDescription] = useState(product.description);
   const [price, setPrice] = useState(product.price);
-  const [quantity, setQuantity] = useState(product.quantity);
+  const [quantity] = useState(product.quantity);
   const [image , setImage] = useState(product.image)
 
   const dispatch = useDispatch();
@@ -26,14 +26,12 @@ const ProductEditForm = ({ editMode , setEditMode }) => {
       const data = await dispatch(fetchEditProduct(product.id,name, description, price,quantity,image));
       if (data){
         if (!data.errors){
-          history.push('/')
+          history.push(`/products/${product.id}`)
         }
-        else{
+        else {
           setErrors(data.errors)
         }
       }
-
-
   };
 
   const submitDelete = () =>{
@@ -51,10 +49,6 @@ const ProductEditForm = ({ editMode , setEditMode }) => {
 
   const updatePrice= (e) => {
     setPrice(e.target.value);
-  };
-
-  const updateQuantity = (e) => {
-    setQuantity(e.target.value);
   };
 
   const updateImage = (e)=>{
@@ -101,17 +95,6 @@ const ProductEditForm = ({ editMode , setEditMode }) => {
           required
         ></input>
       </div>
-      {/* <div>
-      <p className='error'>{errors?.quantity}</p>
-        <label>Quantity</label>
-        <input
-          type='number'
-          name='quantity'
-          onChange={updateQuantity}
-          value={quantity}
-          required
-          ></input>
-      </div> */}
       <div>
         <label>Image</label>
         <p></p>
