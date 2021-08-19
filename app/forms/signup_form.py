@@ -27,7 +27,7 @@ def strong_password(form,field):
     if re.match(r"^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$])[\w\d@#$]{6,20}$", password):
         return
     else:
-        raise ValidationError('Password must be between 6 and 20 characters and include: one digit, one uppercase letter, one lowercase letter, one special character')
+        raise ValidationError('Password must be between 6 and 20 characters and include: one digit, one uppercase letter, one lowercase letter, one @, #, or $ symbol.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
