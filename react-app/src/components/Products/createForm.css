@@ -1,0 +1,66 @@
+
+.form-container{
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -50%);
+}
+
+.create-product-form{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    width: 300px;
+    height: auto;
+    max-height: 520px;
+    padding: 0px;
+    /* border-style: groove; */
+    font-family: "Open Sans", Arial, sans-serif;
+}
+
+textarea{
+    font-family: "Open Sans", Arial, sans-serif;
+    resize: none;
+    font-family: "Open Sans", Arial, sans-serif;
+    border-radius: 6px;
+    border: solid .5px rgb(150, 149, 149);
+    width: 200px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.create-product-form div{
+    margin-top: 10px;
+}
+
+.create-product-btn{
+    border: none;
+    background-color: yellowgreen;
+    color: white;
+    width: 215px;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.create-product-form input{
+    font-family: "Open Sans", Arial, sans-serif;
+    border-radius: 6px;
+    border: solid .5px rgb(150, 149, 149);
+    width: 200px;
+    height: 35px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+input.form-price{
+    width: 140px;
+}
+
+.create-form-header {
+    font-size: 30px;
+}
