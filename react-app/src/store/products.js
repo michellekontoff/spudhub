@@ -67,6 +67,7 @@ export const fetchEditProduct = (id, name, description, price, quantity, image) 
         method: "PUT",
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify({
+            product_id: id,
             name,
             description,
             price,
@@ -92,7 +93,7 @@ export const fetchDeleteProduct = (id) => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json()
-        
+
         if (data.errors) {
             return;
         }
