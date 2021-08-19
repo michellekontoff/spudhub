@@ -1,6 +1,6 @@
 .product-details-container {
     display: grid;
-    grid-template-columns: 300px 100px 100px;
+    grid-template-columns: 320px 100px 100px;
     grid-template-areas:
         "img header header"
         "img price edit"
@@ -8,7 +8,6 @@
     ;
     margin: auto;
     width: 600px;
-    overflow: auto;
 }
 
 .product-img-container {
@@ -16,10 +15,11 @@
     width: fit-content;
     display: flex;
     align-items: center;
+    padding-right: 20px;
 }
 
 .product-img-container img {
-    width: 300px;
+    max-width: 300px;
 }
 
 .product-header {
@@ -35,11 +35,12 @@
 
 .product-description {
     grid-area: description;
-    overflow: scroll;
     width: 200px;
     height: 200px;
     margin-top: 20px;
     font-size: 18px;
+    overflow-y: auto;
+    overflow-wrap:break-word;
 }
 
 .product-edit-btn {

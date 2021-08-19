@@ -15,7 +15,11 @@ const ProductDetails = ({userId, product, editMode, setEditMode}) =>{
 
         <div className='product-details-container'>
             <h1 className='product-header'>{product.name}</h1>
-            <div className="product-img-container"><img src={product.image} alt={product.name}></img></div>
+            <div className="product-img-container">
+                {product.image ?
+                <img src={product.image} alt={product.id}></img>
+                : <img src='https://i.imgur.com/BPOYKBx.png' alt={product.id}></img>}
+            </div>
             <div className='product-description'>{product.description}</div>
             <div className='product-price'>${product.price}</div>
             <div className='product-edit-btn'>{editButton}</div>

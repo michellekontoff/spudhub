@@ -68,33 +68,33 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
 
 
   return (
-    <form
-    onSubmit={onSubmit}
-    >
+    <div className='edit-form-container'>
+    <form onSubmit={onSubmit} className='edit-product-form'>
       <div>
         <p className='error'>{errors?.name}</p>
-        <label>Name</label>
-        <input
+        Name <input
           type='text'
           name='name'
           onChange={updateName}
           value={name}
           required
-        ></input>
+          placeholder='Name'
+          ></input>
       </div>
       <div>
       <p className='error'>{errors?.description}</p>
-        <label>Descripton</label>
-        <textarea
+        Description <textarea
           name='description'
           onChange={updateDescription}
           value={description}
           required
-        ></textarea>
+          rows='7'
+          cols='10'
+          ></textarea>
       </div>
       <div>
-        <p className='error'>{errors?.price}</p>
         <label>Price</label>
+        <p className='error'>{errors?.price}</p>
         <input
           type='number'
           name='price'
@@ -103,7 +103,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           required
         ></input>
       </div>
-      <div>
+      {/* <div>
       <p className='error'>{errors?.quantity}</p>
         <label>Quantity</label>
         <input
@@ -112,23 +112,23 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           onChange={updateQuantity}
           value={quantity}
           required
-        ></input>
-      </div>
+          ></input>
+      </div> */}
       <div>
-        <label>Image</label>
+        Image
         <input
           type='text'
           name='image'
           onChange={updateImage}
           value={image}
-        ></input>
+          ></input>
       </div>
-      <button type='submit'>Edit Product</button>
-      <button
-      type='button'
-      onClick ={submitDelete}
-      >Delete Product</button>
+      <div className='edit-form-btns'>
+      <button type='submit'>Edit</button>
+      <button type='button' onClick ={submitDelete}>Delete</button>
+      </div>
     </form>
+    </div>
   );
 };
 
