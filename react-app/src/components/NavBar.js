@@ -31,7 +31,7 @@ const NavBar = () => {
             </button>
           </div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            SpudHub
+            <img className='logo' src='https://i.imgur.com/p7x1dQz.png' alt='logo'></img>
           </NavLink>
         </div>
         <div className='nav_options'>
