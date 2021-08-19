@@ -12,22 +12,8 @@ const ShoppingCart = () => {
    const dispatch = useDispatch()
 
     const cartObject = useSelector(state => state.shoppingCart)
-    console.log(cartObject)
     const itemList = Object.values(cartObject)
 
-    // const cartTotal = (itemList) => {
-
-    //     let total = 0;
-    
-    //     itemList.forEach(item => {
-    //         let product = useSelector(state => state.products[item.productId]);
-    //         let price = item.quantity * product.price;
-    
-    //         total += price;
-    //     })
-    
-    //     return total
-    // }
 
     let purchaseButton ;
     if (itemList.length){

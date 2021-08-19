@@ -12,7 +12,7 @@ function ProductList({product, user}) {
     return (
         <div className='product-container' key={product.id}>
             {user ?
-                <button className='plus-btn' onClick={() => dispatch(addToCart(product.id))}>
+                <button className='plus-btn' onClick={() => dispatch(addToCart(product))}>
                     <i className="fas fa-plus"></i>
                 </button>
                 : null
