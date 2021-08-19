@@ -65,3 +65,10 @@ input.form-price{
 .create-form-header {
     font-size: 30px;
 }
+
+.edit-product-form label {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 50px;
+    padding-top: 5px;
+}

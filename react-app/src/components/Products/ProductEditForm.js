@@ -71,8 +71,9 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
     <div className='edit-form-container'>
     <form onSubmit={onSubmit} className='edit-product-form'>
       <div>
+        <label>Name</label>
         <p className='error'>{errors?.name}</p>
-        Name <input
+        <input
           type='text'
           name='name'
           onChange={updateName}
@@ -82,8 +83,9 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           ></input>
       </div>
       <div>
-      <p className='error'>{errors?.description}</p>
-        Description <textarea
+        <label>Description</label>
+        <p className='error'>{errors?.description}</p>
+        <textarea
           name='description'
           onChange={updateDescription}
           value={description}
@@ -115,7 +117,8 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           ></input>
       </div> */}
       <div>
-        Image
+        <label>Image</label>
+        <p></p>
         <input
           type='text'
           name='image'
