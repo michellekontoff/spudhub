@@ -4,10 +4,10 @@ import { useParams } from 'react-router-dom';
 import ProductDetails from './ProductDetails'
 import ProductEditForm from './ProductEditForm'
 
+import { Modal } from '../../context/Modal'
 
 
-
-const ProductPage = () => {
+const ProductPage = ({ setShowProductModal }) => {
 
     const [editMode, setEditMode] = useState(false)
 
@@ -19,12 +19,22 @@ const ProductPage = () => {
     const productId = params.id
     const product = useSelector((state) => state.products[productId])
 
+    let content = null
+
     if (!editMode) {
-        return (<ProductDetails userId={userId}  product={product} editMode={editMode} setEditMode={setEditMode} />)
+        content = (
+            <ProductDetails userId={userId}  product={product} editMode={editMode} setEditMode={setEditMode} />
+        )
     }
     else {
-        return (<ProductEditForm product={product} editMode={editMode} setEditMode={setEditMode} />)
+        content = (<ProductEditForm product={product} editMode={editMode} setEditMode={setEditMode} />)
     }
+
+    return (
+        <Modal onClose={() => setShowProductModal(false)}>
+            {content}
+        </Modal>
+    )
 }
 
 

@@ -23,6 +23,7 @@ form {
     padding: 5px;
     width: auto;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .logout-btn:hover {

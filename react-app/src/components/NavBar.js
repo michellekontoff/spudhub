@@ -8,6 +8,7 @@ import './NavBar.css'
 import { Modal } from '../context/Modal'
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm'
+import ProductDetails from './Products/ProductDetails';
 
 
 const NavBar = () => {
@@ -90,7 +91,13 @@ const NavBar = () => {
     <div className="shopping_cart_bar" style={!cart ? {transform: 'translateX(-100%)'} : {}}>
       <div className='cart_container'>
         <div className="cart_arrow_button" onClick={()=> setCart(!cart)}>
-          <i className="fas fa-arrow-right"></i>
+          <button className='nav-btn' onClick={() => setShowSignUpModal(true)}>Sign Up</button>
+              {showSignUpModal && (
+                <Modal onClose={() => setShowSignUpModal(false)}>
+                  <ProductDetails productId={2} />
+                </Modal>
+              )}
+              <i className="fas fa-arrow-right"></i>
         </div>
         <div className='cart_items'>
             More features coming soon!

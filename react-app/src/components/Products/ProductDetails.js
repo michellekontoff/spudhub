@@ -4,15 +4,25 @@ import { useParams } from 'react-router-dom';
 import './Product.css'
 
 
-const ProductDetails = ({userId, product, editMode, setEditMode}) =>{
+const ProductDetails = ({ productId }) =>{
     let editButton ;
 
-    if ( userId === product.user_id){
+    const [editMode, setEditMode] = useState(false)
+
+    // const params = useParams()
+    const user = useSelector((state) => state.session.user)
+    let userId;
+    if (user) userId = user.id
+
+    // const productId = params.id
+    const product = useSelector((state) => state.products[productId])
+
+    if ( userId === product.user_id) {
         editButton = <button type='button' onClick={()=> setEditMode(true)}>Edit</button>
+
     }
 
     return (
-
         <div className='product-details-container'>
             <h1 className='product-header'>{product.name}</h1>
             <div className="product-img-container">
@@ -24,7 +34,6 @@ const ProductDetails = ({userId, product, editMode, setEditMode}) =>{
             <div className='product-price'>${product.price}</div>
             <div className='product-edit-btn'>{editButton}</div>
         </div>
-
     )
 
 
