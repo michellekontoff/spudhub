@@ -98,7 +98,7 @@ const NavBar = () => {
             More features coming soon!
             <ShoppingCart />
         </div>
-        <button onClick={()=> dispatch(resetCart())}>Purchase</button>
+        
       </div>
     </div>
     </>
