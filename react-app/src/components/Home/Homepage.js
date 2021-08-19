@@ -31,7 +31,7 @@ function HomePage() {
                                 <li className="product">
                                     {product.image ?
                                     <img src={product.image} alt={product.id}></img>
-                                    : null}
+                                    : <img src='https://i.imgur.com/BPOYKBx.png' alt={product.id}></img>}
                                     <div>{product.name}</div>
                                     <div>${product.price}</div>
                                 </li>
