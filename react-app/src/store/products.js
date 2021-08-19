@@ -59,7 +59,7 @@ export const fetchCreateProduct = (user_id, name, description, price, quantity, 
         return data
     }
     if (data.errors) {
-        return data.errors
+        return data
     }
 }
 

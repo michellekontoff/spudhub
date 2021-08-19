@@ -33,7 +33,6 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
           setEditMode(false)
         }
         else{
-          console.log(data)
           setErrors(data.errors)
         }
       }
