@@ -1,14 +1,14 @@
 .product-details-container {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 300px 100px 100px;
     grid-template-areas:
         "img header header"
         "img price edit"
         "img description description"
-        "img quantity quantity"
     ;
     margin: auto;
     width: 600px;
+    overflow: auto;
 }
 
 .product-img-container {
@@ -24,22 +24,34 @@
 
 .product-header {
     grid-area: header;
+    text-align: left;
+    font-size: 40px;
 }
 
 .product-price {
     grid-area: price;
-}
-
-.product-quantity {
-    grid-area: quantity;
+    font-size: 30px;
 }
 
 .product-description {
     grid-area: description;
-    overflow-y: scroll;
-    max-width: 200px;
+    overflow: scroll;
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    font-size: 18px;
 }
 
 .product-edit-btn {
     grid-area: edit;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.product-edit-btn button {
+    background-color: green;
+    border: none;
+    color: white;
+    font-size: 20px;
 }
