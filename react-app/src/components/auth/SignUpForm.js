@@ -62,7 +62,7 @@ const SignUpForm = () => {
       <div>
         <p>{errors?.email}</p>
         <input
-          type='text'
+          type='email'
           name='email'
           onChange={updateEmail}
           value={email}
