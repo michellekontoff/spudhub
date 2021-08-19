@@ -23,7 +23,7 @@ const ProductEditForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-      const data = await dispatch(fetchEditProduct(product.id,name, description, price,quantity,image));
+      const data = await dispatch(fetchEditProduct(product.id, name, description, price, quantity, image));
       if (data){
         if (!data.errors){
           history.push(`/products/${product.id}`)
