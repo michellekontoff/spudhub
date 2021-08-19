@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import {  useDispatch, useSelector } from 'react-redux'
-import { Redirect , useHistory, useParams } from 'react-router-dom';
+import {  useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom';
 import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
 
 /*

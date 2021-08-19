@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+
+import {  useSelector } from 'react-redux'
 // import { fetchAllProducts } from '../../store/products';
 import './Homepage.css'
 import { Link } from 'react-router-dom';
 
 function HomePage() {
-    const dispatch = useDispatch();
+
     const products = Object.values(useSelector((state) => state.products));
 
     const user = useSelector(state => state.session.user);

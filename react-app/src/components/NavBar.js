@@ -1,8 +1,8 @@
 
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import { Modal } from '../context/Modal'
