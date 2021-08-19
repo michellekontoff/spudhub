@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
 // import { Redirect } from 'react-router-dom';
 import {fetchCreateProduct} from '../../store/products';
+import { useHistory } from 'react-router-dom';
+
 import './createForm.css'
 
 /*
@@ -17,18 +19,25 @@ const ProductCreateForm = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState(0.00);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [image , setImage] = useState('')
 
   const user = useSelector(state => state.session.user);
   const user_id = user.id
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const onSubmit = async (e) => {
     e.preventDefault();
       const data = await dispatch(fetchCreateProduct(user_id ,name, description, price,quantity,image));
-      if (data) {
-        setErrors(data)
+      console.log(data)
+      if (data){
+        if (!data.errors){
+          history.push('/');
+        }
+        else{
+          setErrors(data.errors)
+        }
       }
 
   };

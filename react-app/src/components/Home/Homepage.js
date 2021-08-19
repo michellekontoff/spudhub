@@ -16,7 +16,7 @@ function HomePage() {
 
     return (
         <div>
-            <h1>Spudhub</h1>
+            <h1>SpudHub</h1>
             <div className="container">
                 <ul className="list">
                     {products.map((product) => (
@@ -29,7 +29,9 @@ function HomePage() {
                             }
                             <Link to={`/products/${product.id}`}>
                                 <li className="product">
+                                    {product.image ?
                                     <img src={product.image} alt={product.id}></img>
+                                    : null}
                                     <div>{product.name}</div>
                                     <div>${product.price}</div>
                                 </li>
