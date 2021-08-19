@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import ProductDetails from '../Products/ProductDetails';
 import { Modal } from '../../context/Modal';
 import ProductPage from '../Products/ProductPage';
-
+import ProductList from './ProductList';
 
 
 function HomePage() {
@@ -14,7 +14,7 @@ function HomePage() {
     const products = Object.values(useSelector((state) => state.products));
 
     const user = useSelector(state => state.session.user);
-    const [showProductModal, setShowProductModal] = useState(false)
+
     // useEffect(() => {
     //     dispatch(fetchAllProducts());
     // }, [dispatch])
@@ -25,29 +25,7 @@ function HomePage() {
             <div className="container">
                 <ul className="list">
                     {products.map((product) => (
-                        <div className='product-container' key={product.id}>
-                            {user ?
-                                <button className='plus-btn'>
-                                    <i className="fas fa-plus"></i>
-                                </button>
-                                : null
-                            }
-                            {/* <Link to={`/products/${product.id}`}> */}
-
-                            <li className="product" >
-                                {product.image ?
-                                <img src={product.image} alt={product.id} onClick={() => setShowProductModal(true)}></img>
-                                : <img src='https://i.imgur.com/BPOYKBx.png' alt={product.id}></img>}
-                                <div>{product.name}</div>
-                                <div>${product.price}</div>
-                            </li>
-                            {showProductModal && (
-                                <Modal onClose={() => setShowProductModal(false)}>
-                                    <ProductDetails productId={product.id}/>
-                                </Modal>
-                            )}
-                            {/* </Link> */}
-                        </div>
+                        <ProductList user={user} product={product} />
                     ))}
                 </ul>
             </div>

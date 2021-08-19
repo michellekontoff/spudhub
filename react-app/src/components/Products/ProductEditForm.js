@@ -3,17 +3,13 @@ import {  useDispatch, useSelector } from 'react-redux'
 import { Redirect , useHistory, useParams } from 'react-router-dom';
 import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
 
-/*
-TODO:
-    [] error handling
-*/
 
 
+const ProductEditForm = ({ editMode , setEditMode }) => {
 
-
-const ProductEditForm = ({product, editMode , setEditMode}) => {
-
-
+  const params = useParams()
+  const productId = params.id
+  const product = useSelector((state) => state.products[productId])
 
   const [errors, setErrors] = useState(false);
   const [name, setName] = useState(product.name);
@@ -30,7 +26,7 @@ const ProductEditForm = ({product, editMode , setEditMode}) => {
       const data = await dispatch(fetchEditProduct(product.id,name, description, price,quantity,image));
       if (data){
         if (!data.errors){
-          setEditMode(false)
+          history.push('/')
         }
         else{
           setErrors(data.errors)
