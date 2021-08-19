@@ -5,10 +5,10 @@ const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 const SUBTRACT_FROM_CART = 'cart/SUBTRACT_FROM_CART'
 const RESET_CART = 'cart/RESET_CART'
 
-const loadCart = (cart) => ({
-    type: LOAD_CART,
-    cart
-})
+// const loadCart = (cart) => ({
+//     type: LOAD_CART,
+//     cart
+// })
 
 export const addToCart = (itemId) => ({
     type: ADD_TO_CART,

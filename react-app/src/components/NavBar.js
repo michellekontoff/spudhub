@@ -2,18 +2,18 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import { Modal } from '../context/Modal'
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm'
 import ShoppingCart from './Cart/ShoppingCart';
-import { resetCart } from '../store/shoppingCart';
+// import { resetCart } from '../store/shoppingCart';
 
 
 const NavBar = () => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   const user = useSelector(state => state.session.user);
   const [optionsOn, setOptionsOn] = useState(false);
   const [cart, setCart] = useState(true);
@@ -98,7 +98,7 @@ const NavBar = () => {
             More features coming soon!
             <ShoppingCart />
         </div>
-        
+
       </div>
     </div>
     </>

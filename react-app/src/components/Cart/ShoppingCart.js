@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react-router-dom"
+// import { useEffect } from "react-router-dom"
 import { resetCart } from "../../store/shoppingCart"
 import CartItem from "./CartItem"
 
