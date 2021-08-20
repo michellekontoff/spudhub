@@ -57,6 +57,7 @@ const LoginForm = () => {
       </div>
       <div>
       <button className='modal-login-btn' type='submit'>Login</button>
+      <button className='modal-login-btn' type='button' onClick={() => dispatch(login('demo@aa.io', 'password'))}>Demo</button>
       </div>
     </form>
     </>

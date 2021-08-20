@@ -2,18 +2,16 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import { Modal } from '../context/Modal'
 import LoginForm from './auth/LoginForm';
 import SignUpForm from './auth/SignUpForm'
 import ShoppingCart from './Cart/ShoppingCart';
-import { resetCart } from '../store/shoppingCart';
 
 
 const NavBar = () => {
-  const dispatch = useDispatch()
   const user = useSelector(state => state.session.user);
   const [optionsOn, setOptionsOn] = useState(false);
   const [cart, setCart] = useState(true);
@@ -32,7 +30,7 @@ const NavBar = () => {
             </button>
           </div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img className='logo' src='https://i.imgur.com/p7x1dQz.png' alt='logo'></img>
+            <img className='logo' src='https://raw.githubusercontent.com/michellekontoff/spudhub/main/documentation/logo-tp-border1.png' alt='logo'></img>
           </NavLink>
         </div>
         <div className='nav_options'>

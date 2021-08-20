@@ -4,7 +4,7 @@
     grid-template-areas:
         "img header header"
         "img price edit"
-        "img description description"
+        "add-btn description description"
     ;
     margin: auto;
     width: 600px;
@@ -47,12 +47,22 @@
     grid-area: edit;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-start;
 }
 
-.product-edit-btn button {
+.product-edit-btn button,
+.product-add-to-cart button {
     background-color: yellowgreen;
     border: none;
     color: white;
     font-size: 20px;
+    border-radius: 5px;
+}
+
+.product-add-to-cart {
+    grid-area: add-btn;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    height: 25px;
 }
