@@ -1,6 +1,6 @@
 
 nav{
-    background-color: #1ea11e;
+    background-color: #29a829;
     height: 75px;
     display: flex;
     align-items: flex-end;
@@ -132,8 +132,8 @@ nav{
 }
 
 .logo{
-    position: relative;
-    top: 30px;
+    position: absolute;
+    top: 3px;
     /* width: 120px; */
     height: 80px;
 }
