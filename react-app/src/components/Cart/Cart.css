@@ -41,16 +41,26 @@
     border: none;
     font-size: 20px;
     width: 30px;
+    border-radius: 4px;
+}
+
+.cart-item-quantity button:hover {
+    background-color: rgb(116, 155, 39);
 }
 
 .cart-item-remove {
     grid-area: remove;
     margin-right: 20px;
     width: 150px;
-    background-color: rgb(148, 40, 40);
+    background-color: rgb(195, 53, 53);
     color: white;
     border: none;
     font-size: 20px;
+    border-radius: 4px;
+}
+
+.cart-item-remove:hover {
+    background-color: rgb(129, 36, 36);
 }
 
 .total_purchase_container {

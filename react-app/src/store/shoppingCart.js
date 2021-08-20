@@ -30,8 +30,14 @@ export const resetCart = () => ({
     type: RESET_CART,
 })
 
-export const loadCartFromStorage = () => async(dispatch) => {
-
+const saveCart = (cart) => {
+    try {
+        const jsonCart = JSON.stringify(cart)
+        localStorage.setItem('cart', jsonCart)
+    }
+    catch (err) {
+    // ignore
+    }
 }
 
 export const useAddItem = (product, cart) => {
@@ -44,8 +50,7 @@ export const useAddItem = (product, cart) => {
             cart[product.id] = { productId: product.id, quantity: 1, price: product.price }
         }
         await dispatch(loadCart(cart));
-        let jsonCart = JSON.stringify(cart);
-        localStorage.setItem('cart', jsonCart)
+        saveCart(cart)
         return
     }
 }
@@ -60,8 +65,7 @@ export const useSubtractItem = (product, cart) => {
             cart[product.id].price = product.price * cart[product.id].quantity
         }
         await dispatch(loadCart(cart));
-        let jsonCart = JSON.stringify(cart);
-        localStorage.setItem('cart', jsonCart)
+        saveCart(cart)
         return
     }
 }
@@ -71,8 +75,7 @@ export const useRemoveItem = (productId, cart) => {
     return async function() {
         await dispatch(removeFromCart(productId));
         delete cart[productId]
-        let jsonCart = JSON.stringify(cart);
-        localStorage.setItem('cart', jsonCart)
+        saveCart(cart)
         return
     }
 }

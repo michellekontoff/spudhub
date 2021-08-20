@@ -19,9 +19,9 @@ const loadState = () => {
   }
 }
 
-const States = loadState()
+const state = { shoppingCart: loadState()}
 
-const store = configureStore(States);
+const store = configureStore(state);
 
 ReactDOM.render(
   <React.StrictMode>
