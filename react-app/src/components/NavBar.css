@@ -1,6 +1,6 @@
 
 nav{
-    background-color: rgb(0, 128, 0);
+    background-color: #1ea11e;
     height: 75px;
     display: flex;
     align-items: flex-end;
@@ -134,4 +134,5 @@ nav{
 .logo{
     width: 120px;
     height: 50px;
+    box-shadow: 1px 1px 1px 1px white;
 }

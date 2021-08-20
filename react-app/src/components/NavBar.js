@@ -30,7 +30,7 @@ const NavBar = () => {
             </button>
           </div>
           <NavLink to='/' exact={true} activeClassName='active'>
-            <img className='logo' src='https://raw.githubusercontent.com/michellekontoff/spudhub/main/documentation/logo-transparent.png' alt='logo'></img>
+            <img className='logo' src='https://raw.githubusercontent.com/michellekontoff/spudhub/michelle-local/documentation/logo-transparent.png' alt='logo'></img>
           </NavLink>
         </div>
         <div className='nav_options'>
