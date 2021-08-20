@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Product.css'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { addToCart } from '../../store/shoppingCart'
 
 
 const ProductDetails = () =>{
-    let editButton ;
+    const dispatch = useDispatch()
+
+    let editButton;  
 
     const user = useSelector((state) => state.session.user)
     let userId;
@@ -32,6 +35,9 @@ const ProductDetails = () =>{
             <div className='product-description'>{product.description}</div>
             <div className='product-price'>${product.price.toFixed(2)}</div>
             <div className='product-edit-btn'>{editButton}</div>
+            <div className='product-add-to-cart'>
+                {user ? <button type='button' onClick={() => dispatch(addToCart(product))}>Add to Cart</button> : null}
+            </div>
         </div>
     )
 
