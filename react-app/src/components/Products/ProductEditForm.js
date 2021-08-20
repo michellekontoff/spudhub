@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom';
 import {fetchEditProduct, fetchDeleteProduct} from '../../store/products';
+import { useRemoveItem } from '../../store/shoppingCart';
 
 
 
@@ -10,6 +11,8 @@ const ProductEditForm = () => {
   const params = useParams()
   const productId = params.id
   const product = useSelector((state) => state.products[productId])
+  const cart = useSelector(state => state.shoppingCart)
+  const removeItem = useRemoveItem(productId, cart)
 
   const [errors, setErrors] = useState(false);
   const [name, setName] = useState(product.name);
@@ -35,6 +38,7 @@ const ProductEditForm = () => {
   };
 
   const submitDelete = () =>{
+    removeItem()
     dispatch(fetchDeleteProduct(product.id))
     history.push(`/`)
   }
