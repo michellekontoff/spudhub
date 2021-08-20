@@ -22,10 +22,8 @@ const ShoppingCart = () => {
         })
 
         setTotal(total.toFixed(2))
-            
+
     })
-
-
 
     let purchaseButton ;
     if (itemList.length){
