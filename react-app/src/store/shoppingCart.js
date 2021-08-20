@@ -10,9 +10,9 @@ const loadCart = (cart) => ({
     cart
 })
 
-export const addToCart = (itemId) => ({
+export const addToCart = (item) => ({
     type: ADD_TO_CART,
-    itemId
+    item
 })
 
 export const removeFromCart = (itemId) => ({
@@ -20,9 +20,9 @@ export const removeFromCart = (itemId) => ({
     itemId
 })
 
-export const subtractFromCart = (itemId) => ({
+export const subtractFromCart = (item) => ({
     type: SUBTRACT_FROM_CART,
-    itemId
+    item
 })
 
 export const resetCart = () => ({
@@ -40,24 +40,27 @@ let initialState = {}
 export default function reducer(state = initialState, action) {
     let newState = { ...state }
     let itemId;
+    let item;
 
     switch (action.type) {
         case LOAD_CART:
             return { ...state, ...action.products };
         case ADD_TO_CART:
-            itemId = action.itemId
-            if (itemId in newState) {
-                newState[itemId].quantity += 1
+            item = action.item
+            if (item.id in newState) {
+                newState[item.id].quantity += 1
+                newState[item.id].price = item.price * newState[item.id].quantity
             } else {
-                newState[itemId] = { productId: itemId, quantity: 1 }
+                newState[item.id] = { productId: item.id, quantity: 1, price: item.price }
             }
             return newState
         case SUBTRACT_FROM_CART:
-            itemId = action.itemId
-            if (newState[itemId].quantity <= 1) {
-                delete newState[itemId]
+            item = action.item
+            if (newState[item.id].quantity <= 1) {
+                delete newState[item.id]
             } else {
-                newState[itemId].quantity -= 1
+                newState[item.id].quantity -= 1
+                newState[item.id].price = item.price * newState[item.id].quantity
             }
             return newState
         case REMOVE_FROM_CART:

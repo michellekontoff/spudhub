@@ -6,15 +6,19 @@ const CartItem = ({ item }) => {
     const dispatch = useDispatch()
 
     const product = useSelector(state => state.products[item.productId])
-    console.log(item)
+
 
     return (
     <div className='cart-item'>
-        <div>{product.name}</div>
-        <div>{item.quantity}</div>
-        <button onClick={() => dispatch(addToCart(product.id))}>+</button>
-        <button onClick={() => dispatch(subtractFromCart(product.id))}>-</button>
-        <button onClick={() => dispatch(removeFromCart(product.id))}>Remove</button>
+        <img src={product.image} alt={product.name} className="cart-item-img"></img>
+        <div className="cart-item-name">{product.name}</div>
+        <div className="cart-item-price">{item.price}</div>
+        <div className="cart-item-quantity">
+            <button onClick={() => dispatch(addToCart(product))}>+</button>
+            <div>{item.quantity}</div>
+            <button onClick={() => dispatch(subtractFromCart(product))}>-</button>
+        </div>
+        <button className="cart-item-remove" onClick={() => dispatch(removeFromCart(product.id))}>Remove</button>
     </div>
     )
 }
