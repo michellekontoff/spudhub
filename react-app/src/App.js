@@ -16,6 +16,7 @@ import { fetchAllProducts } from './store/products';
 import { fetchAllReviews } from './store/reviews';
 import reducer, { loadCart } from './store/shoppingCart';
 import { createStore } from 'redux';
+import ReviewPage from './components/Reviews/ReviewPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -85,6 +86,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route path='/reviews/:id' exact={true} >
+          <ReviewPage />
         </Route>
         <Route>
           404 page not found

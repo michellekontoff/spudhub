@@ -106,8 +106,8 @@ export default function reducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case ALL_REVIEWS:
-            // return { ...state, ...action.reviews };
-            return { ...action.reviews };
+            return { ...state, ...action.reviews };
+            // return { ...action.reviews };
         case CREATE_REVIEW:
             newState[action.review.id] = action.review
             return newState

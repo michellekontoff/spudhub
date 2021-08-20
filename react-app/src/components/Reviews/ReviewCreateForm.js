@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchCreateReview } from '../../store/reviews';
 import { useHistory } from 'react-router-dom';
-import './Review.css'
+import './Reviews.css'
 
 
 const ReviewCreateForm = ({ product_id }) => {
