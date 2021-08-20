@@ -1,9 +1,10 @@
-
+import { useDispatch } from "react-redux"
 const LOAD_CART = 'cart/LOAD_CART'
 const ADD_TO_CART = 'cart/ADD_TO_CART'
 const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 const SUBTRACT_FROM_CART = 'cart/SUBTRACT_FROM_CART'
 const RESET_CART = 'cart/RESET_CART'
+
 
 const loadCart = (cart) => ({
     type: LOAD_CART,
@@ -31,6 +32,37 @@ export const resetCart = () => ({
 
 export const loadCartFromStorage = () => async(dispatch) => {
 
+}
+
+export const useAddItem = (product, cart) => {
+    const dispatch = useDispatch()
+    return async function() {
+        await dispatch(addToCart(product));
+        let jsonCart = JSON.stringify(cart);
+        localStorage.setItem('cart', jsonCart)
+        return
+    }
+}
+
+export const useSubtractItem = (product, cart) => {
+    const dispatch = useDispatch()
+    return async function() {
+        await dispatch(subtractFromCart(product));
+        let jsonCart = JSON.stringify(cart);
+        localStorage.setItem('cart', jsonCart)
+        return
+    }
+}
+
+export const useRemoveItem = (productId, cart) => {
+    const dispatch = useDispatch()
+    return async function() {
+        const data = await dispatch(removeFromCart(productId));
+        console.log(data)
+        let jsonCart = JSON.stringify(cart);
+        localStorage.setItem('cart', jsonCart)
+        return
+    }
 }
 
 

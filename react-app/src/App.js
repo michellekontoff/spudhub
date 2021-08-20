@@ -18,6 +18,7 @@ import { fetchAllProducts } from './store/products';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  localStorage.setItem('myCat', 'Tom');
 
   useEffect(() => {
     (async() => {
@@ -58,6 +59,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route>
+          404 page not found
         </Route>
       </Switch>
     </BrowserRouter>

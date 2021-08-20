@@ -8,7 +8,7 @@ function ProductList({product, user}) {
     const [showProductModal, setShowProductModal] = useState(false)
 
     const dispatch = useDispatch()
-
+    
     return (
         <div className='product-container' key={product.id}>
             {user ?
