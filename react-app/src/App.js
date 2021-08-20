@@ -14,17 +14,42 @@ import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
 import { fetchAllReviews } from './store/reviews';
+import reducer, { loadCart } from './store/shoppingCart';
+import { createStore } from 'redux';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
+  // const jsonCart = localStorage.getItem("cart");
+    // if (jsonCart) {
+    //   let cart = JSON.parse(jsonCart);
+    //   console.log(cart)
+    //   dispatch(loadCart(cart))
+    // }
+
+  // const loadState = () => {
+  //   try {
+  //     const cart = localStorage.getItem('cart')
+  //     if (cart === null) {
+  //       return undefined
+  //     }
+  //     return JSON.parse(cart)
+  //   }
+  //   catch (err) {
+  //     return undefined
+  //   }
+  // }
+
+  // const store  = createStore(reducer, loadState())
+  // console.log(store)
+
 
   useEffect(() => {
     (async() => {
       await dispatch(authenticate());
       await dispatch(fetchAllProducts());
       await dispatch(fetchAllReviews());
-      
+
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -60,6 +85,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route>
+          404 page not found
         </Route>
       </Switch>
     </BrowserRouter>

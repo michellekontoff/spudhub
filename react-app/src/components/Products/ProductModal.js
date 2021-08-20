@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Product.css'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../../store/shoppingCart'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAddItem } from '../../store/shoppingCart'
 
 const ProductModal = ({ product, userId, setEditMode }) =>{
     const dispatch = useDispatch()
+    const cart = useSelector(state => state.shoppingCart)
+    const addItem = useAddItem(product, cart)
 
     let editButton ;
 
@@ -27,7 +29,7 @@ const ProductModal = ({ product, userId, setEditMode }) =>{
             <div className='product-price'>${product.price.toFixed(2)}</div>
             <div className='product-edit-btn'>{editButton}</div>
             <div className='product-add-to-cart'>
-                {userId ? <button type='button' onClick={() => dispatch(addToCart(product))}>Add to Cart</button> : null}
+                {userId ? <button type='button' onClick={addItem}>Add to Cart</button> : null}
             </div>
         </div>
     )

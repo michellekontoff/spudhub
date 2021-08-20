@@ -1,6 +1,90 @@
-
+.cart-item {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 100px 200px 200px;
+    grid-template-areas:
+        "img name quantity"
+        "img price . "
+        ". price remove"
+    ;
+}
 
 .cart-item-img{
-    width: 50px;
+    width: 60px;
     height: auto;
+    grid-area: img;
+}
+
+.cart-item-name {
+    grid-area: name;
+    font-size: 18pt;
+}
+
+.cart-item-price {
+    grid-area: price;
+    font-size: 15pt;
+}
+
+.cart-item-quantity {
+    grid-area: quantity;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    width: 150px;
+}
+
+.cart-item-quantity button {
+    background-color: yellowgreen;
+    color: white;
+    border: none;
+    font-size: 20px;
+    width: 30px;
+    border-radius: 4px;
+}
+
+.cart-item-quantity button:hover {
+    background-color: rgb(116, 155, 39);
+}
+
+.cart-item-remove {
+    grid-area: remove;
+    margin-right: 20px;
+    width: 150px;
+    background-color: rgb(195, 53, 53);
+    color: white;
+    border: none;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+.cart-item-remove:hover {
+    background-color: rgb(129, 36, 36);
+}
+
+.total_purchase_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: flex-end;
+    align-items: flex-end;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+}
+
+.total {
+    font-size: 30px;
+    color: darkgreen;
+}
+
+.purchase_btn {
+    background-color: yellowgreen;
+    color: white;
+    width: 150px;
+    height: 35px;
+    border: none;
+    border-radius: 4px;
+    font-size: 25px;
 }

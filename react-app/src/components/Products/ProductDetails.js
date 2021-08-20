@@ -2,13 +2,13 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Product.css'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToCart } from '../../store/shoppingCart'
+import { useAddItem } from '../../store/shoppingCart'
 
 
 const ProductDetails = () =>{
     const dispatch = useDispatch()
 
-    let editButton;  
+    let editButton;
 
     const user = useSelector((state) => state.session.user)
     let userId;
@@ -17,6 +17,8 @@ const ProductDetails = () =>{
     const params = useParams()
     const productId = params.id
     const product = useSelector((state) => state.products[productId])
+    const cart = useSelector(state => state.shoppingCart)
+    const addItem = useAddItem(product, cart)
 
     if ( userId === product.user_id) {
         editButton = <Link to={`/products/${product.id}/edit`}>
@@ -36,7 +38,7 @@ const ProductDetails = () =>{
             <div className='product-price'>${product.price.toFixed(2)}</div>
             <div className='product-edit-btn'>{editButton}</div>
             <div className='product-add-to-cart'>
-                {user ? <button type='button' onClick={() => dispatch(addToCart(product))}>Add to Cart</button> : null}
+                {user ? <button type='button' onClick={addItem}>Add to Cart</button> : null}
             </div>
         </div>
     )

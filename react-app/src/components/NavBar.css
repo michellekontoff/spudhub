@@ -97,12 +97,19 @@ nav{
     position: fixed;
     top: 0;
     bottom: 0;
-    width: 300px;
+    width: 500px;
     left: 100%;
     transition: all 0.2s linear;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0 8px 1px rgb(211, 211, 211);
 }
+
+@media only screen and (max-device-width: 500px) {
+    .shopping_cart_bar {
+        width: 100%;
+    }
+}
+
 
 .cart_container{
     margin-left: 5%;
@@ -126,9 +133,10 @@ nav{
     box-shadow: 2.25px 2.25px 2.25px 2.25px lightgray;
 }
 
-.cart_items{
+.cart_title{
     margin-top: 5%;
-    font-size: 20px;
+    margin-bottom: 5%;
+    font-size: 30px;
 }
 
 .logo{
