@@ -12,7 +12,7 @@ const CartItem = ({ item }) => {
     <div className='cart-item'>
         <img src={product.image} alt={product.name} className="cart-item-img"></img>
         <div className="cart-item-name">{product.name}</div>
-        <div className="cart-item-price">{item.price}</div>
+        <div className="cart-item-price">${item.price.toFixed(2)}</div>
         <div className="cart-item-quantity">
             <button onClick={() => dispatch(addToCart(product))}>+</button>
             <div>{item.quantity}</div>

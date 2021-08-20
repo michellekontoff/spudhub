@@ -1,33 +1,56 @@
 .cart-item {
+    margin-bottom: 20px;
     display: grid;
     grid-template-columns: 100px 200px 200px;
     grid-template-areas:
-        "img name name"
-        "img price quantity"
-        "remove price quantity"
+        "img name quantity"
+        "img price . "
+        ". price remove"
     ;
 }
 
 .cart-item-img{
-    width: 50px;
+    width: 60px;
     height: auto;
     grid-area: img;
 }
 
 .cart-item-name {
     grid-area: name;
+    font-size: 18pt;
 }
 
 .cart-item-price {
     grid-area: price;
+    font-size: 15pt;
 }
 
 .cart-item-quantity {
     grid-area: quantity;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 20px;
+    width: 150px;
+}
+
+.cart-item-quantity button {
+    background-color: yellowgreen;
+    color: white;
+    border: none;
+    font-size: 20px;
+    width: 30px;
 }
 
 .cart-item-remove {
     grid-area: remove;
+    margin-right: 20px;
+    width: 150px;
+    background-color: rgb(148, 40, 40);
+    color: white;
+    border: none;
+    font-size: 20px;
 }
 
 .total_purchase_container {
