@@ -1,5 +1,4 @@
 
-# from sqlalchemy.orm import backref
 from .db import db
 from .order_detail import Order_Detail
 
@@ -14,7 +13,6 @@ class Order(db.Model):
     created_at = db.Column(db.Date , nullable=False)
     updated_at = db.Column(db.Date , nullable=False)
 
-# Might need to add a reciprical property to products
     products = db.relationship("Product", secondary='order_details', backref=db.backref("orders"), lazy=True)
 
     def to_dict(self):

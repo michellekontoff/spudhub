@@ -3,9 +3,6 @@ from datetime import datetime
 from app.seeds.product_list import products
 import random
 
-
-
-# Adds a demo user, you can add other users here if you want
 def seed_products():
     i = 0
 
@@ -26,13 +23,6 @@ def seed_products():
         i += 1
 
     db.session.commit()
-
-
-# Uses a raw SQL query to TRUNCATE the products table.
-# SQLAlchemy doesn't have a built in function to do this
-# TRUNCATE Removes all the data from the table, and RESET IDENTITY
-# resets the auto incrementing primary key, CASCADE deletes any
-# dependent entities
 
 def undo_products():
     db.session.execute('TRUNCATE products RESTART IDENTITY CASCADE;')

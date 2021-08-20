@@ -82,7 +82,7 @@ const NavBar = () => {
             </p>
           </div>
           <div onClick={()=> setOptionsOn(!optionsOn)}>
-            {user ? <LogoutButton setShowLoginModal={setShowLoginModal} setShowSignUpModal={setShowSignUpModal} /> : 'More features coming soon!'}
+            {user ? <LogoutButton setCart={setCart} cart={cart} setShowLoginModal={setShowLoginModal} setShowSignUpModal={setShowSignUpModal} /> : 'More features coming soon!'}
           </div>
         </div>
       </div>

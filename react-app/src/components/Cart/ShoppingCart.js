@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useResetCartItems } from "../../store/shoppingCart"
 import CartItem from "./CartItem"
 import "./Cart.css"
@@ -7,7 +7,6 @@ import { useEffect, useState } from "react"
 
 
 const ShoppingCart = () => {
-   const dispatch = useDispatch()
    const [total, setTotal] = useState(0)
 
    const cartObject = useSelector(state => state.shoppingCart)

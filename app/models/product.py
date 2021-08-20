@@ -1,4 +1,3 @@
-# from enum import unique
 from app.models import review
 from .db import db
 from .order_detail import Order_Detail
