@@ -31,7 +31,7 @@ const ShoppingCart = () => {
       purchaseButton= <button className="purchase_btn" onClick={resetCart}>Purchase</button>
    }
    else{
-      purchaseButton = "Buy something"
+      purchaseButton = null
    }
 
    return (
@@ -40,6 +40,7 @@ const ShoppingCart = () => {
             {itemList?.map((item) => (
                <CartItem key={item.productId} item={item} />
             ))}
+            {total > 0 ? null : 'Buy something!'}
          </div>
          <div className="parent-div-purchase">
             <div className='total_purchase_container'>

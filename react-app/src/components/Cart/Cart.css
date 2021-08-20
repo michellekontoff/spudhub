@@ -1,6 +1,6 @@
 .shopping_cart_container {
     height: 550px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .cart-item {
