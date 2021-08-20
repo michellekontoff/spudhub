@@ -6,7 +6,7 @@ const SUBTRACT_FROM_CART = 'cart/SUBTRACT_FROM_CART'
 const RESET_CART = 'cart/RESET_CART'
 
 
-const loadCart = (cart) => ({
+export const loadCart = (cart) => ({
     type: LOAD_CART,
     cart
 })
@@ -37,7 +37,13 @@ export const loadCartFromStorage = () => async(dispatch) => {
 export const useAddItem = (product, cart) => {
     const dispatch = useDispatch()
     return async function() {
-        await dispatch(addToCart(product));
+        if (product.id in cart) {
+            cart[product.id].quantity += 1
+            cart[product.id].price = product.price * cart[product.id].quantity
+        } else {
+            cart[product.id] = { productId: product.id, quantity: 1, price: product.price }
+        }
+        await dispatch(loadCart(cart));
         let jsonCart = JSON.stringify(cart);
         localStorage.setItem('cart', jsonCart)
         return
@@ -47,7 +53,13 @@ export const useAddItem = (product, cart) => {
 export const useSubtractItem = (product, cart) => {
     const dispatch = useDispatch()
     return async function() {
-        await dispatch(subtractFromCart(product));
+        if (cart[product.id].quantity <= 1) {
+            delete cart[product.id]
+        } else {
+            cart[product.id].quantity -= 1
+            cart[product.id].price = product.price * cart[product.id].quantity
+        }
+        await dispatch(loadCart(cart));
         let jsonCart = JSON.stringify(cart);
         localStorage.setItem('cart', jsonCart)
         return
@@ -57,10 +69,19 @@ export const useSubtractItem = (product, cart) => {
 export const useRemoveItem = (productId, cart) => {
     const dispatch = useDispatch()
     return async function() {
-        const data = await dispatch(removeFromCart(productId));
-        console.log(data)
+        await dispatch(removeFromCart(productId));
+        delete cart[productId]
         let jsonCart = JSON.stringify(cart);
         localStorage.setItem('cart', jsonCart)
+        return
+    }
+}
+
+export const useResetCartItems = () => {
+    const dispatch = useDispatch()
+    return async function() {
+        await dispatch(resetCart());
+        localStorage.removeItem('cart')
         return
     }
 }

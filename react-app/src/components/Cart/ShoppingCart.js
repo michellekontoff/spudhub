@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
-import { resetCart } from "../../store/shoppingCart"
+import { useResetCartItems } from "../../store/shoppingCart"
 import CartItem from "./CartItem"
-
 import "./Cart.css"
 import { useEffect, useState } from "react"
 
@@ -13,8 +12,8 @@ const ShoppingCart = () => {
 
    const cartObject = useSelector(state => state.shoppingCart)
    const itemList = Object.values(cartObject)
+   const resetCart = useResetCartItems()
 
-   
 
    useEffect(() => {
 
@@ -30,7 +29,7 @@ const ShoppingCart = () => {
 
    let purchaseButton ;
    if (itemList.length){
-      purchaseButton= <button className="purchase_btn" onClick={()=> dispatch(resetCart())}>Purchase</button>
+      purchaseButton= <button className="purchase_btn" onClick={resetCart}>Purchase</button>
    }
    else{
       purchaseButton = "Buy something"
