@@ -1,18 +1,30 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useEffect } from "react-router-dom"
 import { resetCart } from "../../store/shoppingCart"
 import CartItem from "./CartItem"
 
-
 import "./Cart.css"
+import { useEffect, useState } from "react"
 
 
 
 const ShoppingCart = () => {
    const dispatch = useDispatch()
+   const [total, setTotal] = useState(0)
 
     const cartObject = useSelector(state => state.shoppingCart)
     const itemList = Object.values(cartObject)
+
+    useEffect(() => {
+
+        let total = 0;
+        itemList.forEach((item) => {
+            total += item.price
+        })
+
+        setTotal(total)
+            
+    })
+
 
 
     let purchaseButton ;
@@ -28,7 +40,7 @@ const ShoppingCart = () => {
             {itemList?.map((item) => (
                <CartItem key={item.productId} item={item} />
             ))}
-            {purchaseButton}
+           {total} {purchaseButton}
         </div>
      )
 }
