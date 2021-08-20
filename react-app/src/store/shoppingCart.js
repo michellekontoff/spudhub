@@ -1,11 +1,12 @@
-
+import { useDispatch } from "react-redux"
 const LOAD_CART = 'cart/LOAD_CART'
 const ADD_TO_CART = 'cart/ADD_TO_CART'
 const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 const SUBTRACT_FROM_CART = 'cart/SUBTRACT_FROM_CART'
 const RESET_CART = 'cart/RESET_CART'
 
-const loadCart = (cart) => ({
+
+export const loadCart = (cart) => ({
     type: LOAD_CART,
     cart
 })
@@ -29,8 +30,63 @@ export const resetCart = () => ({
     type: RESET_CART,
 })
 
-export const loadCartFromStorage = () => async(dispatch) => {
+const saveCart = (cart) => {
+    try {
+        const jsonCart = JSON.stringify(cart)
+        localStorage.setItem('cart', jsonCart)
+    }
+    catch (err) {
+    // ignore
+    }
+}
 
+export const useAddItem = (product, cart) => {
+    const dispatch = useDispatch()
+    return async function() {
+        if (product.id in cart) {
+            cart[product.id].quantity += 1
+            cart[product.id].price = product.price * cart[product.id].quantity
+        } else {
+            cart[product.id] = { productId: product.id, quantity: 1, price: product.price }
+        }
+        await dispatch(loadCart(cart));
+        saveCart(cart)
+        return
+    }
+}
+
+export const useSubtractItem = (product, cart) => {
+    const dispatch = useDispatch()
+    return async function() {
+        if (cart[product.id].quantity <= 1) {
+            delete cart[product.id]
+        } else {
+            cart[product.id].quantity -= 1
+            cart[product.id].price = product.price * cart[product.id].quantity
+        }
+        await dispatch(loadCart(cart));
+        saveCart(cart)
+        return
+    }
+}
+
+export const useRemoveItem = (productId, cart) => {
+    const dispatch = useDispatch()
+    return async function() {
+        await dispatch(removeFromCart(productId));
+        delete cart[productId]
+        saveCart(cart)
+        return
+    }
+}
+
+export const useResetCartItems = () => {
+    const dispatch = useDispatch()
+    return async function() {
+        await dispatch(resetCart());
+        localStorage.removeItem('cart')
+        return
+    }
 }
 
 
