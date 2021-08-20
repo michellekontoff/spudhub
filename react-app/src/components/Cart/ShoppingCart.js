@@ -22,25 +22,28 @@ const ShoppingCart = () => {
         })
 
         setTotal(total.toFixed(2))
-            
-    })
+
+    }, [setTotal, itemList])
 
 
 
     let purchaseButton ;
     if (itemList.length){
-       purchaseButton= <button onClick={()=> dispatch(resetCart())}>Purchase</button>
+       purchaseButton= <button className="purchase_btn" onClick={()=> dispatch(resetCart())}>Purchase</button>
     }
     else{
        purchaseButton = "Buy something"
     }
 
      return (
-        <div>
+        <div className='shopping_cart_container'>
             {itemList?.map((item) => (
                <CartItem key={item.productId} item={item} />
             ))}
-           {total > 0 ? total : null} {purchaseButton}
+            <div className='total_purchase_container'>
+               <div className='total'>{total > 0 ? `Total: $${total}` : null}</div>
+               <div>{purchaseButton}</div>
+            </div>
         </div>
      )
 }
