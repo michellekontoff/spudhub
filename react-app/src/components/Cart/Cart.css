@@ -44,7 +44,8 @@
     border-radius: 4px;
 }
 
-.cart-item-quantity button:hover {
+.cart-item-quantity button:hover,
+.purchase_btn:hover {
     background-color: rgb(116, 155, 39);
 }
 
