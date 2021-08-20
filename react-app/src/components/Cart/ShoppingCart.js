@@ -35,15 +35,19 @@ const ShoppingCart = () => {
    }
 
    return (
-      <div className='shopping_cart_container'>
-         {itemList?.map((item) => (
-            <CartItem key={item.productId} item={item} />
-         ))}
-         <div className='total_purchase_container'>
-            <div className='total'>{total > 0 ? `Total: $${total}` : null}</div>
-            <div>{purchaseButton}</div>
+      <>
+         <div className='shopping_cart_container'>
+            {itemList?.map((item) => (
+               <CartItem key={item.productId} item={item} />
+            ))}
          </div>
-      </div>
+         <div className="parent-div-purchase">
+            <div className='total_purchase_container'>
+               <div className='total'>{total > 0 ? `Total: $${total}` : null}</div>
+               <div>{purchaseButton}</div>
+            </div>
+         </div>
+      </>
    )
 }
 
