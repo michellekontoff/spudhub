@@ -21,7 +21,7 @@ const ShoppingCart = () => {
             total += item.price
         })
 
-        setTotal(total)
+        setTotal(total.toFixed(2))
             
     })
 
@@ -40,7 +40,7 @@ const ShoppingCart = () => {
             {itemList?.map((item) => (
                <CartItem key={item.productId} item={item} />
             ))}
-           {total} {purchaseButton}
+           {total > 0 ? total : null} {purchaseButton}
         </div>
      )
 }
