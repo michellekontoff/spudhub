@@ -23,7 +23,6 @@ def username_exists(form, field):
 
 def strong_password(form,field):
     password = field.data
-    # Add any special characters as your wish I used only #@$
     if re.match(r"^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[@#$])[\w\d@#$]{6,20}$", password):
         return
     else:

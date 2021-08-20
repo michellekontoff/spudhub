@@ -1,13 +1,12 @@
 import { useState } from "react";
 import ProductPage from "../Products/ProductPage"
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useAddItem } from "../../store/shoppingCart";
 
 
 function ProductList({product, user}) {
     const [showProductModal, setShowProductModal] = useState(false)
 
-    const dispatch = useDispatch()
     const cart = useSelector(state => state.shoppingCart)
     const addItem = useAddItem(product, cart)
 

@@ -13,35 +13,10 @@ import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
-import reducer, { loadCart } from './store/shoppingCart';
-import { createStore } from 'redux';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  // const jsonCart = localStorage.getItem("cart");
-    // if (jsonCart) {
-    //   let cart = JSON.parse(jsonCart);
-    //   console.log(cart)
-    //   dispatch(loadCart(cart))
-    // }
-
-  // const loadState = () => {
-  //   try {
-  //     const cart = localStorage.getItem('cart')
-  //     if (cart === null) {
-  //       return undefined
-  //     }
-  //     return JSON.parse(cart)
-  //   }
-  //   catch (err) {
-  //     return undefined
-  //   }
-  // }
-
-  // const store  = createStore(reducer, loadState())
-  // console.log(store)
-
 
   useEffect(() => {
     (async() => {

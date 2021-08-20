@@ -1,9 +1,8 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { useRemoveItem, useAddItem, useSubtractItem } from "../../store/shoppingCart"
 import "./Cart.css"
 
 const CartItem = ({ item }) => {
-    const dispatch = useDispatch()
 
     const product = useSelector(state => state.products[item.productId])
     const cart = useSelector(state => state.shoppingCart)
