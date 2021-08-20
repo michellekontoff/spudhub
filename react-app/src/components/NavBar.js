@@ -93,10 +93,10 @@ const NavBar = () => {
           <i className="fas fa-arrow-right"></i>
         </div>
         <div className='cart_items'>
-            More features coming soon!
-            <ShoppingCart />
+          <div className='cart_title'>{user.username}'s Shopping Cart:</div>
+          <ShoppingCart />
         </div>
-        
+
       </div>
     </div>
     </>
