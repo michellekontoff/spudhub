@@ -54,7 +54,7 @@ export const fetchCreateReview = (user_id, product_id, review, rating) => async 
 
     const data = await response.json()
     if (response.ok) {
-        dispatch(createProduct(data))
+        dispatch(createReview(data))
         return data
     }
     if (data.errors) {
@@ -67,7 +67,6 @@ export const fetchEditReview = (id, review, rating) => async (dispatch) => {
         method: "PUT",
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify({
-            product_id: id,
             review,
             rating
         })
@@ -107,7 +106,8 @@ export default function reducer(state = initialState, action) {
     let newState = { ...state }
     switch (action.type) {
         case ALL_REVIEWS:
-            return { ...state, ...action.reviews };
+            // return { ...state, ...action.reviews };
+            return { ...action.reviews };
         case CREATE_REVIEW:
             newState[action.review.id] = action.review
             return newState

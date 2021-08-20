@@ -13,7 +13,7 @@ import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
-
+import { fetchAllReviews } from './store/reviews';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -23,6 +23,8 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(fetchAllProducts());
+      await dispatch(fetchAllReviews());
+      
       setLoaded(true);
     })();
   }, [dispatch]);
