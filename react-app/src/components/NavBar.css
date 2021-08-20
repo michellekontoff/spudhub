@@ -132,6 +132,8 @@ nav{
 }
 
 .logo{
+    position: relative;
+    top: 30px;
     /* width: 120px; */
-    height: 100px;
+    height: 80px;
 }
