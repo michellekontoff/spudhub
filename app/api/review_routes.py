@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from app.models import db, Review
 from datetime import  datetime
-# from app.forms.review_create_form import ReviewForm
-# from app.forms.review_edit_form import ReviewEditForm
+from app.forms.review_create_form import ReviewCreateForm
+from app.forms.review_edit_form import ReviewEditForm
 
 review_routes = Blueprint("reviews", __name__)
 
@@ -11,52 +11,68 @@ review_routes = Blueprint("reviews", __name__)
 def all_reviews():
 
     reviews = Review.query.all()
-
     return {review.to_dict()['id']: review.to_dict() for review in reviews}
 
 
-@review_routes.route('/create', method=["POST"])
-def create_product():
-    form = ReviewForm() # This is grabs the validators for the Review Form
+@review_routes.route('/create', methods=["POST"])
+def create_review():
+
+    form = ReviewCreateForm() # This is grabs the validators for the Review Form
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit(): # Once validated , the user-inputs will be pulled from the form and saved as the data variable
-        data = Review()
-        form.populate_obj(data)
-        data['create_at'] = datetime.now() # adds the created_at time individually since it wasn't used inside the Review Form
-        data['updated_at'] = datetime.now()
-        print(data)
-        # db.session.add(data)
-        # db.session.commit()
-        return data.to_dict()
+        data = form.data
+        new_review = Review(
+        user_id = data['user_id'],
+        product_id = data['product_id'],
+        review = data['review'],
+        rating = data['rating'],
+        created_at = datetime.now(), # adds the created_at time individually since it wasn't used inside the Review model
+        updated_at = datetime.now(),
+        )
+        # form.populate_obj(data), this method might work as well
+        db.session.add(new_review)
+        db.session.commit()
+        return new_review.to_dict()
     else:
-        return "Bad Data "
+        return {'errors':form.errors}, 500
 
 
+#  according to TA, if we werent using wtforms, this is how to obtain the body from the request
+# test = request.get_json()
+# print(test)
 
-# @review_routes.route('/<int:id>', methods=[ 'PUT', 'DELETE'])
-# def review_page(id):
-#     review = Review.query.filter(Review.id == id).first()
+    # this how the errors are returned
+# {
+#     "errors": {
+#         "rating": [
+#             "This field is required."
+#         ],
+#         "review": [
+#             "Review must be between 2 and 255 characters."
+#         ]
+#     }
+# }
 
-#     if request.method == 'PUT':
-#         form = ReviewEditForm()
-#         form['csrf_token'].data = request.cookies['csrf_token']
-#         if form.validate_on_submit():
-#             new_data = form.data
-#         # new_data =request.get_json()
-#             product.name = new_data['name']
-#             product.description = new_data['description']
-#             product.price = new_data['price']
-#             product.quantity = new_data['quantity']
-#             product.image = new_data['image']
-#             product.updated_at = datetime.now()
 
-#             db.session.add(product)
-#             db.session.commit()
-#             return product.to_dict()
-#         else:
-#             return {'errors':form.errors},500
+@review_routes.route('/<int:id>', methods=[ 'PUT', 'DELETE'])
+def review_page(id):
+    review = Review.query.filter(Review.id == id).first()
 
-#     elif request.method == 'DELETE':
-#         db.session.delete(product)
-#         db.session.commit()
-#         return {"deletion":"successful"}
+    if request.method == 'PUT':
+        form = ReviewEditForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit():
+            new_data = form.data
+            review.rating = new_data['rating']
+            review.review = new_data['review']
+            review.updated_at = datetime.now()
+
+            db.session.commit()
+            return review.to_dict()
+        else:
+            return {'errors':form.errors},500
+
+    elif request.method == 'DELETE':
+        db.session.delete(review)
+        db.session.commit()
+        return {"deletion":"successful"}
