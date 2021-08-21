@@ -6,9 +6,11 @@ import './Reviews.css'
 
 
 const ReviewList = ({productId})=>{
-    const allReviews = useSelector(state=> state.reviews)
-    const product_Reviews = Object.values(allReviews).filter(review => review.product_id === productId)
-
+    const allReviews = Object.values(useSelector(state=> state.reviews))
+    const product_Reviews = Object.values(allReviews)
+    // const product_Reviews = Object.values(allReviews).filter(review => review.product_id === productId)
+    console.log(product_Reviews, '')
+    console.log(allReviews)
 
     return (
         <div>
