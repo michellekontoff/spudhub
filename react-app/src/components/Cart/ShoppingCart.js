@@ -16,12 +16,11 @@ const ShoppingCart = () => {
 
    if (cartObject && user) {
       const cart = localStorage.getItem(`cart ${String(user.id)}`)
-      console.log(cart)
-      const parsedCart = JSON.parse(cart)
-      console.log(parsedCart)
-
-      const newObj = Object.assign(parsedCart, cartObject)
-      itemList = Object.values(newObj)
+      if (cart) {
+         const parsedCart = JSON.parse(cart)
+         const newObj = Object.assign(parsedCart, cartObject)
+         itemList = Object.values(newObj)
+      }
    }
 
 
