@@ -6,7 +6,7 @@ import ProductList from './ProductList';
 function HomePage() {
 
     function sortProductsByName (productA, productB) {
-        let nameA = productA.name.toUpperCase(); 
+        let nameA = productA.name.toUpperCase();
         let nameB = productB.name.toUpperCase();
         if (nameA < nameB) {
             return -1;
@@ -14,7 +14,7 @@ function HomePage() {
         if (nameA > nameB) {
             return 1;
         }
-        
+
         return 0;
     }
 

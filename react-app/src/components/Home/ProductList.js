@@ -1,19 +1,19 @@
 import { useState } from "react";
 import ProductPage from "../Products/ProductPage"
-import { useSelector } from "react-redux";
-import { useAddItem } from "../../store/shoppingCart";
+import { useDispatch, useSelector } from "react-redux";
+import { useAddItem, addItem } from "../../store/shoppingCart";
 
 
 function ProductList({product, user}) {
     const [showProductModal, setShowProductModal] = useState(false)
-
+    const dispatch = useDispatch()
     const cart = useSelector(state => state.shoppingCart)
-    const addItem = useAddItem(product, cart, user.id)
+    // const addItem = useAddItem(product, cart, user.id)
 
     return (
         <div className='product-container' key={product.id}>
             {user ?
-                <button className='plus-btn' onClick={addItem}>
+                <button className='plus-btn' onClick={() => dispatch(addItem(product, cart, user.id))}>
                     <i className="fas fa-plus"></i>
                 </button>
                 : null
