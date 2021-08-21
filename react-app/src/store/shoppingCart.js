@@ -4,7 +4,7 @@ const ADD_TO_CART = 'cart/ADD_TO_CART'
 const REMOVE_FROM_CART = 'cart/REMOVE_FROM_CART'
 const SUBTRACT_FROM_CART = 'cart/SUBTRACT_FROM_CART'
 const RESET_CART = 'cart/RESET_CART'
-
+const CART_REMOVE_ITEM = 'cart/CART_REMOVE_ITEM'
 
 export const loadCart = (cart) => ({
     type: LOAD_CART,
@@ -153,6 +153,15 @@ export const removeItem = (product, cart, userId) => async (dispatch) => {
     return
 }
 
+export const removeItemCart = (product, cart, userId) => async (dispatch, getState) => {
+    dispatch({
+      type: CART_REMOVE_ITEM,
+      payload: product.id,
+    });
+
+    localStorage.setItem(`cart ${userId}`, JSON.stringify(getState().shoppingCart));
+};
+
 
 export const useResetCartItems = (userId) => {
     const dispatch = useDispatch()
@@ -194,6 +203,10 @@ export default function reducer(state = initialState, action) {
             }
             return newState
         case REMOVE_FROM_CART:
+            itemId = action.itemId
+            delete newState[itemId]
+            return newState
+        case CART_REMOVE_ITEM:
             itemId = action.itemId
             delete newState[itemId]
             return newState

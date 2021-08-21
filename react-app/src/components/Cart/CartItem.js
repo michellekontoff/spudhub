@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { addItem, subtractItem, removeItem, loadCart, loadThisItem } from "../../store/shoppingCart"
+import { addItem, subtractItem, removeItem, removeItemCart, loadCart, loadThisItem } from "../../store/shoppingCart"
 import "./Cart.css"
 
 const CartItem = ({ item }) => {

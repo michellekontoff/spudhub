@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { useResetCartItems } from "../../store/shoppingCart"
+import { useResetCartItems, loadCartItem, addItem } from "../../store/shoppingCart"
 import CartItem from "./CartItem"
 import "./Cart.css"
 import { useEffect, useState } from "react"
@@ -15,14 +15,14 @@ const ShoppingCart = () => {
 
 
    if (cartObject && user) {
-      const cart = localStorage.getItem(`cart ${String(user.id)}`)
-      if (cart) {
-         const parsedCart = JSON.parse(cart)
-         const newObj = Object.assign(parsedCart, cartObject)
-         itemList = Object.values(newObj)
-      }
-   }
+      let data = loadCartItem(cartObject, user.id)
+      let keys = Object.values(data)
+      keys.map((key) => {
+         return addItem(data[key], data, key)
+      })
+      itemList = Object.values(data)
 
+   }
 
 
    useEffect(() => {
