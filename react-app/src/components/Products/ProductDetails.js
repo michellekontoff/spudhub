@@ -17,7 +17,7 @@ const ProductDetails = () =>{
     const productId = params.id
     const product = useSelector((state) => state.products[productId])
     const cart = useSelector(state => state.shoppingCart)
-    const addItem = useAddItem(product, cart)
+    const addItem = useAddItem(product, cart, user.id)
 
     if ( userId === product.user_id) {
         editButton = <Link to={`/products/${product.id}/edit`}>

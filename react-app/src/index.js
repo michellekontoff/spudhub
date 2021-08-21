@@ -6,22 +6,8 @@ import App from './App';
 import { ModalProvider } from './context/Modal';
 import configureStore from './store';
 
-const loadState = () => {
-  try {
-    const cart = localStorage.getItem('cart')
-    if (cart === null) {
-      return undefined
-    }
-    return JSON.parse(cart)
-  }
-  catch (err) {
-    return undefined
-  }
-}
 
-const state = { shoppingCart: loadState()}
-
-const store = configureStore(state);
+const store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>

@@ -30,17 +30,24 @@ export const resetCart = () => ({
     type: RESET_CART,
 })
 
-const saveCart = (cart) => {
+// const loadCart = (cart, userId) => {
+//     const current = localStorage.getItem(`cart ${String(userId)}`)
+//     const parsedCart = JSON.parse(current)
+//     const newObj = Object.assign(parsedCart, cart)
+//     saveCart
+// }
+
+const saveCart = (cart, userId) => {
     try {
         const jsonCart = JSON.stringify(cart)
-        localStorage.setItem('cart', jsonCart)
+        localStorage.setItem(`cart ${String(userId)}`, jsonCart)
     }
     catch (err) {
     // ignore
     }
 }
 
-export const useAddItem = (product, cart) => {
+export const useAddItem = (product, cart, userId) => {
     const dispatch = useDispatch()
     return async function() {
         if (product.id in cart) {
@@ -50,12 +57,12 @@ export const useAddItem = (product, cart) => {
             cart[product.id] = { productId: product.id, quantity: 1, price: product.price }
         }
         await dispatch(loadCart(cart));
-        saveCart(cart)
+        saveCart(cart, userId)
         return
     }
 }
 
-export const useSubtractItem = (product, cart) => {
+export const useSubtractItem = (product, cart, userId) => {
     const dispatch = useDispatch()
     return async function() {
         if (cart[product.id].quantity <= 1) {
@@ -65,26 +72,26 @@ export const useSubtractItem = (product, cart) => {
             cart[product.id].price = product.price * cart[product.id].quantity
         }
         await dispatch(loadCart(cart));
-        saveCart(cart)
+        saveCart(cart, userId)
         return
     }
 }
 
-export const useRemoveItem = (productId, cart) => {
+export const useRemoveItem = (productId, cart, userId) => {
     const dispatch = useDispatch()
     return async function() {
         await dispatch(removeFromCart(productId));
         delete cart[productId]
-        saveCart(cart)
+        saveCart(cart, userId)
         return
     }
 }
 
-export const useResetCartItems = () => {
+export const useResetCartItems = (userId) => {
     const dispatch = useDispatch()
     return async function() {
         await dispatch(resetCart());
-        localStorage.removeItem('cart')
+        localStorage.removeItem(`cart ${userId}`)
         return
     }
 }

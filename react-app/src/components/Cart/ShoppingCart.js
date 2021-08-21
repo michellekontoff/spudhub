@@ -8,10 +8,22 @@ import { useEffect, useState } from "react"
 
 const ShoppingCart = () => {
    const [total, setTotal] = useState(0)
-
+   const user = useSelector((state) => state.session.user)
    const cartObject = useSelector(state => state.shoppingCart)
-   const itemList = Object.values(cartObject)
+   let itemList = Object.values(cartObject)
    const resetCart = useResetCartItems()
+
+
+   if (cartObject && user) {
+      const cart = localStorage.getItem(`cart ${String(user.id)}`)
+      console.log(cart)
+      const parsedCart = JSON.parse(cart)
+      console.log(parsedCart)
+
+      const newObj = Object.assign(parsedCart, cartObject)
+      itemList = Object.values(newObj)
+   }
+
 
 
    useEffect(() => {

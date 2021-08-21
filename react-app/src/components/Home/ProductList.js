@@ -8,7 +8,7 @@ function ProductList({product, user}) {
     const [showProductModal, setShowProductModal] = useState(false)
 
     const cart = useSelector(state => state.shoppingCart)
-    const addItem = useAddItem(product, cart)
+    const addItem = useAddItem(product, cart, user.id)
 
     return (
         <div className='product-container' key={product.id}>

@@ -4,11 +4,12 @@ import "./Cart.css"
 
 const CartItem = ({ item }) => {
 
+    const user = useSelector((state) => state.session.user)
     const product = useSelector(state => state.products[item.productId])
     const cart = useSelector(state => state.shoppingCart)
-    const addItem = useAddItem(product, cart)
-    const removeItem = useRemoveItem(product.id, cart)
-    const subtractItem = useSubtractItem(product, cart)
+    const addItem = useAddItem(product, cart, user.id)
+    const removeItem = useRemoveItem(product.id, cart, user.id)
+    const subtractItem = useSubtractItem(product, cart, user.id)
 
     return (
         <div className='cart-item'>
