@@ -66,6 +66,25 @@ const NavBar = () => {
         <div className="arrow-button" onClick={()=> setOptionsOn(!optionsOn)}>
           <i className="fas fa-arrow-left"></i>
         </div>
+        <div className='sidebar_userInfo'>
+          <div>
+            <p>
+            {user ? 'Welcome  ' + user.username + '!' : 'Please log In'}
+            </p>
+            <p>
+            {user ? 'Email:  ' + user.email : 'Or sign up to see more!'}
+            </p>
+            <p>
+              {user ?
+                <Link to='/products/create' onClick={() => setOptionsOn(!optionsOn)}>Create New Product Listing!</Link>
+                : null
+              }
+            </p>
+          </div>
+          <div onClick={()=> setOptionsOn(!optionsOn)}>
+            {user ? <LogoutButton setCart={setCart} cart={cart} setShowLoginModal={setShowLoginModal} setShowSignUpModal={setShowSignUpModal} /> : 'More features coming soon!'}
+          </div>
+        </div>
       </div>
     </div>
     <div className="shopping_cart_bar" style={!cart ? {transform: 'translateX(-100%)'} : {}}>
