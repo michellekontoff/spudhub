@@ -13,6 +13,7 @@ import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
+import Footer from './components/Footer';
 import Splash from './components/Splash';
 
 
@@ -34,6 +35,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <div id='wrapper'>
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
@@ -67,6 +69,8 @@ function App() {
           404 page not found
         </Route>
       </Switch>
+      <Footer />
+      </div>
     </BrowserRouter>
   );
 }

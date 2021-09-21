@@ -1,9 +1,7 @@
 
 .form-container, .edit-form-container{
-    position: absolute;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -50%);
+    margin: 10px auto;
+    width: 400px;
 }
 
 .create-product-form, .edit-product-form{
@@ -45,6 +43,10 @@ textarea{
     border-radius: 6px;
     padding-top: 4px;
     padding-bottom: 4px;
+}
+
+.create-product-btn:hover {
+    background-color: rgb(116, 155, 39);
 }
 
 .create-product-form input,
