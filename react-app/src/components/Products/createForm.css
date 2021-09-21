@@ -45,6 +45,10 @@ textarea{
     padding-bottom: 4px;
 }
 
+.create-product-btn:hover {
+    background-color: rgb(116, 155, 39);
+}
+
 .create-product-form input,
 .edit-product-form input{
     font-family: "Open Sans", Arial, sans-serif;
