@@ -33,6 +33,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <div id='wrapper'>
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
@@ -64,6 +65,7 @@ function App() {
         </Route>
       </Switch>
       <Footer />
+      </div>
     </BrowserRouter>
   );
 }
