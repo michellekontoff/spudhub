@@ -25,8 +25,6 @@ def create_product():
 
         return {'errors':form.errors},500
 
-        # TODO: redirect to new page after new product is created
-
 
 @product_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def product_page(id):
@@ -40,7 +38,6 @@ def product_page(id):
         form['csrf_token'].data = request.cookies['csrf_token']
         if form.validate_on_submit():
             new_data = form.data
-        # new_data =request.get_json()
             product.name = new_data['name']
             product.description = new_data['description']
             product.price = new_data['price']

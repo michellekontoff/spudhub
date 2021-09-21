@@ -21,29 +21,6 @@ import ReviewPage from './components/Reviews/ReviewPage';
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
-  // const jsonCart = localStorage.getItem("cart");
-    // if (jsonCart) {
-    //   let cart = JSON.parse(jsonCart);
-    //   console.log(cart)
-    //   dispatch(loadCart(cart))
-    // }
-
-  // const loadState = () => {
-  //   try {
-  //     const cart = localStorage.getItem('cart')
-  //     if (cart === null) {
-  //       return undefined
-  //     }
-  //     return JSON.parse(cart)
-  //   }
-  //   catch (err) {
-  //     return undefined
-  //   }
-  // }
-
-  // const store  = createStore(reducer, loadState())
-  // console.log(store)
-
 
   useEffect(() => {
     (async() => {

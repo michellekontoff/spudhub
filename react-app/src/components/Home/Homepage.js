@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux'
 import './Homepage.css'
 import ProductList from './ProductList';

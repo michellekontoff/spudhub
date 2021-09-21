@@ -10,6 +10,12 @@
     width: 600px;
 }
 
+.product-add-to-cart button:hover,
+.product-edit-btn button:hover,
+.edit-form-btns button:hover {
+    background-color: rgb(116, 155, 39);
+}
+
 .product-img-container {
     grid-area: img;
     width: fit-content;

@@ -4,10 +4,11 @@ import { useHistory } from 'react-router-dom';
 import { logout } from '../../store/session';
 import './auth.css'
 
-const LogoutButton = ({ setShowLoginModal, setShowSignUpModal }) => {
+const LogoutButton = ({ cart, setCart, setShowLoginModal, setShowSignUpModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const onLogout = async (e) => {
+    setCart(true)
     await dispatch(logout());
     history.push('/')
     setShowLoginModal(false)

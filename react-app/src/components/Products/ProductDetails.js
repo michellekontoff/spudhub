@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Product.css'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useAddItem } from '../../store/shoppingCart'
 
 
 const ProductDetails = () =>{
-    const dispatch = useDispatch()
 
     let editButton;
 

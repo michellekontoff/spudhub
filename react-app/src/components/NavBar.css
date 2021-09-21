@@ -102,6 +102,7 @@ nav{
     transition: all 0.2s linear;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 0 8px 1px rgb(211, 211, 211);
+    
 }
 
 @media only screen and (max-device-width: 500px) {

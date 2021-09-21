@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Product.css'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useAddItem } from '../../store/shoppingCart'
 
 const ProductModal = ({ product, userId, setEditMode }) =>{
-    const dispatch = useDispatch()
     const cart = useSelector(state => state.shoppingCart)
     const addItem = useAddItem(product, cart)
 
