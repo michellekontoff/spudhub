@@ -41,7 +41,7 @@ export const fetchAllReviews = () => async (dispatch) => {
 
 export const fetchCreateReview = (user_id, product_id, review, rating) => async (dispatch) => {
 
-    const response = await fetch('/api/review/create', {
+    const response = await fetch('/api/reviews/create', {
         method: "POST",
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify({
@@ -62,12 +62,12 @@ export const fetchCreateReview = (user_id, product_id, review, rating) => async 
     }
 }
 
-export const fetchEditReview = (id, review, rating) => async (dispatch) => {
+export const fetchEditReview = (id, review_text, rating) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${id}`, {
         method: "PUT",
         headers: { 'Content-Type': "application/json" },
         body: JSON.stringify({
-            review,
+            review: review_text,
             rating
         })
     })

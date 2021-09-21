@@ -12,13 +12,19 @@ import ReviewList from './ReviewList';
 const ReviewPage = () => {
 
     const params = useParams()
-    const productId = params.id
+    const productId = params.id;
+    const allReviews = Object.values(useSelector(state=> state.reviews))
+    const reviews = allReviews.filter(review => review.product_id == productId)
 
 
     return(
-        <div>
-            <ReviewList productId={productId} />
-            <ReviewCreateForm />
+        <div className='review_container'>
+            {reviews.map(review => (
+                <div key={review.id}>
+                <ReviewList review={review} />
+                </div>
+            ))}
+            <ReviewCreateForm productId={productId} />
         </div>
     )
 }

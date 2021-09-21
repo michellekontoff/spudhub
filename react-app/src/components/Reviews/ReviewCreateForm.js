@@ -5,12 +5,13 @@ import { useHistory } from 'react-router-dom';
 import './Reviews.css'
 
 
-const ReviewCreateForm = ({ product_id }) => {
+const ReviewCreateForm = ({ productId }) => {
     const [errors, setErrors] = useState([]);
     const [review, setReview] = useState('');
     const [rating, setRating] = useState('');
 
     const user_id = useSelector(state => state.session.user).id;
+    let product_id = productId;
 
 
     const history = useHistory()
@@ -22,7 +23,8 @@ const ReviewCreateForm = ({ product_id }) => {
 
         if (data) {
             if (!data.errors) {
-                history.push('/');
+                // history.push('/');
+                return;
             }
             else {
                 setErrors(data.errors)
