@@ -21,7 +21,7 @@ const NavBar = () => {
 
   return (
     <>
-    <nav>
+    <nav style={!user ? {display: 'none'} : {}}>
       <div className='nav_container'>
         <div className='nav_logo'>
           <div>

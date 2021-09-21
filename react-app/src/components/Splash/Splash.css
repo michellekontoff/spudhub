@@ -11,7 +11,7 @@
 .header-container {
     height: 110%;
     overflow: hidden;
-    position: fixed;
+    position: static;
     text-align: center;
     background-image: url("https://i.imgur.com/wvYcxx9.jpg");
     background-size: cover;
