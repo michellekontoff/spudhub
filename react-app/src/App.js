@@ -51,15 +51,15 @@ function App() {
         <ProtectedRoute path='/products/create' exact={true}>
           <ProductCreateForm />
         </ProtectedRoute>
-        <Route path='/products/:id' exact={true} >
+        <ProtectedRoute path='/products/:id' exact={true} >
           <ProductDetails  />
-        </Route>
-        <Route path='/products/:id/edit' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/products/:id/edit' exact={true} >
           <ProductEditForm />
-        </Route>
-        <Route path='/' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} >
           <HomePage />
-        </Route>
+        </ProtectedRoute>
         <Route path='/splash' exact={true}>
           <Splash />
         </Route>
