@@ -13,6 +13,7 @@ import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
+import Footer from './components/Footer';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -62,6 +63,7 @@ function App() {
           404 page not found
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }
