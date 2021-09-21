@@ -41,7 +41,7 @@ const NavBar = () => {
           </>
           : <>
             <>
-              <button className='nav-btn' onClick={() => setShowLoginModal(true)}>Log In</button>
+              <button className='nav-btn' onClick={() => setShowLoginModal(true)}>Login</button>
               {showLoginModal && (
                 <Modal onClose={() => setShowLoginModal(false)}>
                   <LoginForm />

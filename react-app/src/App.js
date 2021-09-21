@@ -13,6 +13,8 @@ import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
+import Splash from './components/Splash';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -57,6 +59,9 @@ function App() {
         </Route>
         <Route path='/' exact={true} >
           <HomePage />
+        </Route>
+        <Route path='/splash' exact={true}>
+          <Splash />
         </Route>
         <Route>
           404 page not found
