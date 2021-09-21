@@ -26,7 +26,7 @@ const Splash = () => {
                     <button className='nav-btn' onClick={() => setShowLoginModal(true)}>LOGIN</button>
                     {showLoginModal && (
                         <Modal onClose={() => setShowLoginModal(false)}>
-                        <LoginForm />
+                            <LoginForm />
                         </Modal>
                     )}
                     </>
@@ -34,7 +34,7 @@ const Splash = () => {
                     <button className='nav-btn' onClick={() => setShowSignUpModal(true)}>SIGN UP</button>
                     {showSignUpModal && (
                         <Modal onClose={() => setShowSignUpModal(false)}>
-                        <SignUpForm />
+                            <SignUpForm />
                         </Modal>
                     )}
                     </>

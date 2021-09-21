@@ -10,7 +10,7 @@ const LogoutButton = ({ cart, setCart, setShowLoginModal, setShowSignUpModal }) 
   const onLogout = async (e) => {
     setCart(true)
     await dispatch(logout());
-    history.push('/')
+    history.push('/splash')
     setShowLoginModal(false)
     setShowSignUpModal(false)
   };
