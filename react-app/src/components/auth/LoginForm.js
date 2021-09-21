@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 import './auth.css'
 
 const LoginForm = () => {
+  const history = useHistory()
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,6 +17,18 @@ const LoginForm = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      history.push('/')
+    }
+  };
+
+  const onDemoLogin = async (e) => {
+    e.preventDefault();
+    const data = await dispatch(login('demo@aa.io', 'password'));
+    if (data) {
+      setErrors(data);
+    } else {
+      history.push('/')
     }
   };
 
@@ -28,7 +41,7 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return history.push('/')
   }
 
   return (
@@ -57,7 +70,7 @@ const LoginForm = () => {
       </div>
       <div>
       <button className='modal-login-btn' type='submit'>Login</button>
-      <button className='modal-login-btn' type='button' onClick={() => dispatch(login('demo@aa.io', 'password'))}>Demo</button>
+      <button className='modal-login-btn' type='button' onClick={onDemoLogin}>Demo</button>
       </div>
     </form>
     </>

@@ -14,6 +14,8 @@ import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
 import Footer from './components/Footer';
+import Splash from './components/Splash';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,14 +53,17 @@ function App() {
         <ProtectedRoute path='/products/create' exact={true}>
           <ProductCreateForm />
         </ProtectedRoute>
-        <Route path='/products/:id' exact={true} >
+        <ProtectedRoute path='/products/:id' exact={true} >
           <ProductDetails  />
-        </Route>
-        <Route path='/products/:id/edit' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/products/:id/edit' exact={true} >
           <ProductEditForm />
-        </Route>
-        <Route path='/' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} >
           <HomePage />
+        </ProtectedRoute>
+        <Route path='/splash' exact={true}>
+          <Splash />
         </Route>
         <Route>
           404 page not found
