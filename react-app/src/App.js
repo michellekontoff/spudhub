@@ -61,14 +61,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/products/:id' exact={true} >
           <ProductDetails  />
-<<<<<<< HEAD
           <ReviewPage />
-        </Route>
-        <Route path='/products/:id/edit' exact={true} >
-=======
         </ProtectedRoute>
         <ProtectedRoute path='/products/:id/edit' exact={true} >
->>>>>>> main
           <ProductEditForm />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
