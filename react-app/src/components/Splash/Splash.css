@@ -1,0 +1,66 @@
+.splash-title {
+    color: white;
+    font-size: 1vw;
+    background-color: rgba(0,0,0,0.5);
+    width: 60vw;
+    margin: 0 auto;
+    margin-top: 10vw;
+    padding: 2vw 2vw 2vw 2vw;
+}
+
+.header-container {
+    height: 110%;
+    overflow: hidden;
+    position: static;
+    text-align: center;
+    background-image: url("https://i.imgur.com/wvYcxx9.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.log-sign-header {
+    margin-bottom: 2vw;
+}
+
+.log-sign-header button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2vw;
+    margin: 0 2vw 0 2vw;
+}
+
+.log-sign-header button:hover {
+    color: rgb(0, 255, 0);
+    font-weight: bold;
+}
+
+.splash-mission {
+    color: white;
+    font-size: 1vw;
+    margin: 0 auto;
+    margin-top: 10vw;
+    padding: 2vw 2vw 2vw 2vw;
+    background-color: rgba(240, 255, 240, 0.5);
+}
+
+.splash-mission p {
+    font-size: 1.5vw;
+    text-align: center;
+    color: black;
+    font-style: italic;
+    padding: 0 5vw 0 5vw;
+    font-weight: bold;
+    line-height: 1.6;
+    margin: 1vw 0 1vw 0;
+}
+
+.splash-mission h2 {
+    color: black;
+    font-size: 2vw;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 1.6;
+    margin: 0 auto;
+}

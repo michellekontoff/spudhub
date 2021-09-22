@@ -17,6 +17,9 @@ import { fetchAllReviews } from './store/reviews';
 import reducer, { loadCart } from './store/shoppingCart';
 import { createStore } from 'redux';
 import ReviewPage from './components/Reviews/ReviewPage';
+import Footer from './components/Footer';
+import Splash from './components/Splash';
+
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -38,6 +41,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <div id='wrapper'>
       <NavBar />
       <Switch>
         <Route path='/login' exact={true}>
@@ -55,15 +59,23 @@ function App() {
         <ProtectedRoute path='/products/create' exact={true}>
           <ProductCreateForm />
         </ProtectedRoute>
-        <Route path='/products/:id' exact={true} >
+        <ProtectedRoute path='/products/:id' exact={true} >
           <ProductDetails  />
+<<<<<<< HEAD
           <ReviewPage />
         </Route>
         <Route path='/products/:id/edit' exact={true} >
+=======
+        </ProtectedRoute>
+        <ProtectedRoute path='/products/:id/edit' exact={true} >
+>>>>>>> main
           <ProductEditForm />
-        </Route>
-        <Route path='/' exact={true} >
+        </ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} >
           <HomePage />
+        </ProtectedRoute>
+        <Route path='/splash' exact={true}>
+          <Splash />
         </Route>
         <Route path='/reviews/:id' exact={true} >
           <ReviewPage />
@@ -72,6 +84,8 @@ function App() {
           404 page not found
         </Route>
       </Switch>
+      <Footer />
+      </div>
     </BrowserRouter>
   );
 }

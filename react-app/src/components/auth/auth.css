@@ -71,6 +71,11 @@ form {
     padding-bottom: 4px;
 }
 
+.modal-login-btn:hover,
+.modal-signup-btn:hover {
+    background-color: rgb(116, 155, 39);
+}
+
 #login-header,
 #signup-header {
     font-size: 30px;
