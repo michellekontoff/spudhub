@@ -26,12 +26,14 @@
 
 .product-img-container img {
     max-width: 300px;
+    cursor: pointer;
 }
 
 .product-header {
     grid-area: header;
     text-align: left;
     font-size: 40px;
+    cursor: pointer;
 }
 
 .product-price {
