@@ -116,6 +116,12 @@
 
 .star-rating i{
     color: yellowgreen;
+    cursor: pointer;
+}
+
+.star-rating i:hover{
+    background-color: rgba(153, 205, 50, 0.226);
+    border-radius: 50%;
 }
 
 .create-review-textarea{
