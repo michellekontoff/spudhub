@@ -25,6 +25,7 @@ const ReviewCreateForm = ({ productId }) => {
             if (!data.errors) {
                 setRating('');
                 setReview('');
+                setErrors([]);
                 return;
             }
             else {

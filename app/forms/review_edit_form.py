@@ -9,4 +9,4 @@ class ReviewEditForm(FlaskForm):
     product_id = IntegerField()
     user_id = IntegerField()
     rating = StringField('Rating', validators=[DataRequired()])
-    review = TextAreaField('Review', validators=[DataRequired(), Length(min=2, max=255, message="Review must be between %(min)d and %(max)d characters.")])
+    review = TextAreaField('Review', validators=[DataRequired(message='Review cannot be blank'), Length(min=2, max=255, message="Review must be between %(min)d and %(max)d characters.")])
