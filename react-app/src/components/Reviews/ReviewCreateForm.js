@@ -8,7 +8,7 @@ import './Reviews.css'
 const ReviewCreateForm = ({ productId }) => {
     const [errors, setErrors] = useState([]);
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState('');
+    const [rating, setRating] = useState(0);
 
     const user_id = useSelector(state => state.session.user).id;
     let product_id = productId;
@@ -20,10 +20,11 @@ const ReviewCreateForm = ({ productId }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         const data = await dispatch(fetchCreateReview(user_id, product_id, review, rating));
-
+        console.log(data)
         if (data) {
             if (!data.errors) {
-                // history.push('/');
+                setRating('');
+                setReview('');
                 return;
             }
             else {
@@ -39,46 +40,45 @@ const ReviewCreateForm = ({ productId }) => {
         setRating(e.target.value)
     }
 
+    const clearReview = () => {
+        setReview('');
+        setRating('');
+        setErrors([]);
+    }
 
     return (
-        <div
-            className='review-form-container'
-        >
-            <form onSubmit={onSubmit} >
+            <form className='create-review-form-container' onSubmit={onSubmit} >
                 <div className='create-review-header'>
-                    Create Review
+                    Submit your Review
                 </div>
                 <div>
-                    <p className='error' >{errors?.Rating}</p>
-                    <input
-                        type='text'
-                        name='Rating'
-                        onChange={updateRating}
-                        value={rating}
-                        required
-                        placeholder='Rating'
-                    ></input>
+                    <div className='error' >{errors?.rating}</div>
+                    <div className='star-rating'>
+                        { rating >= 1 ? <i onClick={() => setRating(1)}  className="fas fa-star"></i> : <i onClick={() => setRating(1)} className="far fa-star"></i> }
+                        { rating >= 2 ? <i onClick={() => setRating(2)}  className="fas fa-star"></i> : <i onClick={() => setRating(2)} className="far fa-star"></i> }
+                        { rating >= 3 ? <i onClick={() => setRating(3)}  className="fas fa-star"></i> : <i onClick={() => setRating(3)} className="far fa-star"></i> }
+                        { rating >= 4 ? <i onClick={() => setRating(4)}  className="fas fa-star"></i> : <i onClick={() => setRating(4)} className="far fa-star"></i> }
+                        { rating == 5 ? <i onClick={() => setRating(5)}  className="fas fa-star"></i> : <i onClick={() => setRating(5)} className="far fa-star"></i> }
+                    </div>
                 </div>
                 <div>
-                    <p className='error' >{errors?.review}</p>
-                    <textarea
+                    <div className='error' >{errors?.review}</div>
+                    <textarea className='create-review-textarea'
                         type='text'
                         name='review'
                         onChange={updateReview}
                         value={review}
-                        required
-                        placeholder='Review'
+                        placeholder='Please enter your review..'
                     ></textarea>
                 </div>
-                <div>
-                    <button className='create-review-btn' type='submit'>Create Review</button>
+                {user_id ?
+                <div className='create-review-form-btns'>
+                    <button type='submit'>Submit</button>
+                    <button onClick={clearReview} type='button'>Clear</button>
                 </div>
+                : null}
             </form>
-        </div>
     )
-
-
-
 }
 
 

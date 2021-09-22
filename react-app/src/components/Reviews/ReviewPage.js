@@ -18,13 +18,18 @@ const ReviewPage = () => {
 
 
     return(
-        <div className='review_container'>
-            {reviews.map(review => (
-                <div key={review.id}>
-                <ReviewList review={review} />
+        <div className='review_page'>
+            <div className='review-page_container'>
+            <h2> Reviews </h2>
+                <div className='hide-review-list-scroll'>
+                    <div className='review-list_container'>
+                        {reviews.map(review => (
+                            <ReviewList review={review} key={review.id} />
+                            ))}
+                    </div>
                 </div>
-            ))}
-            <ReviewCreateForm productId={productId} />
+                <ReviewCreateForm productId={productId} />
+            </div>
         </div>
     )
 }

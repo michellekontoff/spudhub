@@ -1,0 +1,135 @@
+
+
+.review_page{
+    width: 98vw;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    overflow-x: hidden;
+}
+
+.review-page_container{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+
+.hide-review-list-scroll{
+    width: 100%;
+    overflow: hidden;
+}
+
+.review-list_container{
+    width: 100%;
+    height: 600px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-right: 17px;
+}
+
+/* for each review on the list */
+.review-edit-page-container{
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: thin solid rgba(0, 0, 0, 0.199);
+}
+
+.individual-review-container{
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+    width: 100%;
+}
+
+.individual-review-top{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.individual-review-mid i{
+    color: yellowgreen;
+    padding-right: 6px;
+}
+
+.individual-review-bottom{
+    width: 100%;
+    min-height: 20px;
+    max-height: 150px;
+    font-size: 15px;
+    overflow-wrap: break-word;
+}
+
+.individual-review-btns{
+    display: inline-flex;
+    width: 80px;
+    justify-content: space-evenly;
+}
+
+.individual-review-btns button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.individual-review-btns button:hover{
+    color: teal;
+}
+
+
+/* for updating a review */
+.update-review-form{
+    display: inline-flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.update-review-textarea{
+    width: 97%;
+    height: 90px;
+    padding-top: 6px;
+}
+
+.update-review-form-btns button{
+    margin-left: 8px;
+    border-radius: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.update-review-form-btns button:hover{
+    color: teal;
+}
+
+
+/* this is for posting a review */
+.create-review-form-container{
+    width: 100%;
+    display: inline-flex;
+    gap:12px;
+}
+
+.star-rating i{
+    color: yellowgreen;
+}
+
+.create-review-textarea{
+    width: 97%;
+    height: 90px;
+    padding-top: 6px;
+}
+
+.create-review-form-btns button{
+    margin-left: 8px;
+    border-radius: 20px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.create-review-form-btns button:hover{
+    color: teal;
+}
