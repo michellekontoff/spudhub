@@ -57,6 +57,7 @@ function App() {
         </ProtectedRoute>
         <Route path='/products/:id' exact={true} >
           <ProductDetails  />
+          <ReviewPage />
         </Route>
         <Route path='/products/:id/edit' exact={true} >
           <ProductEditForm />
