@@ -74,3 +74,12 @@
     padding-top: 10px;
     height: 25px;
 }
+
+.product-avg-rating{
+    padding-top: 20px;
+    font-size: 20px;
+}
+
+.product-avg-rating i{
+    color: yellowgreen;
+}
