@@ -19,6 +19,10 @@ const ProductDetails = () =>{
     const [avg, setAvg] = useState(0)
 
     useEffect(() => {
+        window.scrollTo(0,0)
+    }, [])
+
+    useEffect(() => {
         let addition = 0;
         reviews?.forEach(review => {
             addition+= review.rating
