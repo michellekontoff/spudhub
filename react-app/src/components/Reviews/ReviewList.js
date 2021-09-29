@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchEditReview, fetchDeleteReview } from '../../store/reviews';
 import { useHistory } from 'react-router-dom';
 import './Reviews.css'
+import StarMaker from './stars';
 
 
 const ReviewList = ({review})=>{
@@ -49,7 +50,7 @@ const ReviewList = ({review})=>{
             { !editMode ?
                 <div className='individual-review-container'>
                     <div className='individual-review-top'> {review.username} </div>
-                    <div className='individual-review-mid'> <i className="fas fa-star"></i>{review.rating} </div>
+                    <div className='individual-review-mid'> <StarMaker rating={review.rating} /> </div>
                     <div className='individual-review-bottom'>{review.review}</div>
                     {review.user_id == user_id ?
                     <div className='individual-review-btns'>
