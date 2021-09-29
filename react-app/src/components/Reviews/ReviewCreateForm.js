@@ -50,7 +50,7 @@ const ReviewCreateForm = ({ productId }) => {
     return (
             <form className='create-review-form-container' onSubmit={onSubmit} >
                 <div className='create-review-header'>
-                    Submit your Review
+                    Submit Your Review
                 </div>
                 <div>
                     <div className='error' >{errors?.rating}</div>
