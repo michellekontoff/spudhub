@@ -76,6 +76,7 @@
 .product-avg-rating{
     padding-top: 20px;
     font-size: 20px;
+    width:auto;
 }
 
 .product-avg-rating i{

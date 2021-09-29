@@ -1,5 +1,12 @@
 
  /* this is to space the stars on each of the reviews */
 .starMaker{
-    width: 12px;
+    width: 15px;
+    font-size: 18px;
+    padding-right: 6px;
+}
+
+/* makes the half star same size as others*/
+.cut{
+    font-size: 18px;
 }

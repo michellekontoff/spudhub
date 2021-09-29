@@ -3,6 +3,8 @@ import { Link, useHistory } from 'react-router-dom';
 import './Product.css'
 import { useSelector } from 'react-redux'
 import { useAddItem } from '../../store/shoppingCart'
+import StarMaker from '../Reviews/stars';
+
 
 const ProductModal = ({ product, userId, setEditMode }) =>{
     const history = useHistory()
@@ -44,7 +46,7 @@ const ProductModal = ({ product, userId, setEditMode }) =>{
                 <div className='product-avg-rating'>
                 { avg > 0 ?
                 <>
-                <i className="fas fa-star" /> {avg} </>
+                <StarMaker rating={avg} /> </>
                 : <>No ratings yet</>}</div>
             </h1>
             <div onClick={sendToDetailsPage} className="product-img-container pointer">
