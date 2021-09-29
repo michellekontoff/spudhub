@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import './Product.css'
 import { useSelector } from 'react-redux'
@@ -21,9 +21,32 @@ const ProductModal = ({ product, userId, setEditMode }) =>{
         history.push(`/products/${product.id}`)
     }
 
+    const allReviews = Object.values(useSelector(state=> state.reviews))
+    const reviews = allReviews.filter(review => review.product_id == product.id)
+    const [avg, setAvg] = useState(0)
+
+    useEffect(() => {
+        let addition = 0;
+        reviews?.forEach(review => {
+            addition+= review.rating
+        })
+        let res = addition/reviews.length
+        if ( addition % reviews.length === 0 ){
+            setAvg(res)
+        } else {
+            setAvg(res.toFixed(1))
+        }
+    }, [allReviews])
+
     return (
         <div className='product-details-container'>
-            <h1 onClick={sendToDetailsPage} className='product-header pointer'>{product.name}</h1>
+            <h1 onClick={sendToDetailsPage} className='product-header pointer'>{product.name}<br/>
+                <div className='product-avg-rating'>
+                { avg > 0 ?
+                <>
+                <i className="fas fa-star" /> {avg} </>
+                : <>No ratings yet</>}</div>
+            </h1>
             <div onClick={sendToDetailsPage} className="product-img-container pointer">
                 {product.image ?
                 <img src={product.image} alt={product.id}></img>
