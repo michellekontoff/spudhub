@@ -8,5 +8,5 @@ from app.models import Review
 class ReviewEditForm(FlaskForm):
     product_id = IntegerField()
     user_id = IntegerField()
-    rating = StringField('Rating', validators=[DataRequired()])
+    rating = StringField('Rating', validators=[DataRequired(message='Please choose a star rating')])
     review = TextAreaField('Review', validators=[DataRequired(message='Review cannot be blank'), Length(min=2, max=255, message="Review must be between %(min)d and %(max)d characters.")])
