@@ -23,14 +23,14 @@ const ProductModal = ({ product, userId, setEditMode }) =>{
 
     return (
         <div className='product-details-container'>
-            <h1 onClick={sendToDetailsPage} className='product-header'>{product.name}</h1>
-            <div className="product-img-container">
+            <h1 onClick={sendToDetailsPage} className='product-header pointer'>{product.name}</h1>
+            <div onClick={sendToDetailsPage} className="product-img-container pointer">
                 {product.image ?
-                <img onClick={sendToDetailsPage} src={product.image} alt={product.id}></img>
+                <img src={product.image} alt={product.id}></img>
                 : <img src='https://i.imgur.com/BPOYKBx.png' alt={product.id}></img>}
             </div>
-            <div className='product-description'>{product.description}</div>
-            <div className='product-price'>${product.price.toFixed(2)}</div>
+            <div onClick={sendToDetailsPage} className='product-description pointer'>{product.description}</div>
+            <div onClick={sendToDetailsPage} className='product-price pointer'>${product.price.toFixed(2)}</div>
             <div className='product-edit-btn'>{editButton}</div>
             <div className='product-add-to-cart'>
                 {userId ? <button type='button' onClick={addItem}>Add to Cart</button> : null}
