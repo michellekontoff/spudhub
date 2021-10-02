@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -18,6 +18,24 @@ const NavBar = () => {
   const [cart, setCart] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [cartQty, setCartQty] = useState(0)
+
+  const cartItems = Object.values(shoppingCart)
+
+
+  function setCartAmount() {
+    if (cartItems.length) {
+        const numItems = cartItems.reduce((item1, item2) => {
+            return item1.quantity + item2.quantity
+          })
+          setCartQty(numItems)
+    }
+  }
+
+  useEffect(setCartAmount, [shoppingCart, cartItems])
+
+
+
 
 
   return (
@@ -37,6 +55,7 @@ const NavBar = () => {
         <div className='nav_options'>
           {user ? <>
             <button className='nav_sidebar_icons nav_cart_icon' onClick={() => setCart(!cart)}>
+                { cartQty > 0 ? <span>{cartQty}</span> : null}
               <i className="fas fa-shopping-cart" />
             </button>
           </>
