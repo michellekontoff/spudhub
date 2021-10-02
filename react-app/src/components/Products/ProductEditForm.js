@@ -64,6 +64,9 @@ const ProductEditForm = () => {
   return (
     <div className='edit-form-container'>
     <form onSubmit={onSubmit} className='edit-product-form'>
+    <div className='edit-form-header'>
+        Edit Product
+      </div>
       <div>
         <label>Name</label>
         <p className='error'>{errors?.name}</p>

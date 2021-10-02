@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -13,15 +13,36 @@ import ShoppingCart from './Cart/ShoppingCart';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  const shoppingCart = useSelector(state => state.shoppingCart)
   const [optionsOn, setOptionsOn] = useState(false);
   const [cart, setCart] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [cartQty, setCartQty] = useState('0')
+
+  let cartItems = Object.values(shoppingCart)
+
+  function setCartAmount() {
+      cartItems = cartItems.map(item => item.quantity)
+    if (cartItems.length) {
+        const numItems = cartItems.reduce((item1, item2) => {
+            return item1 + item2
+          })
+        setCartQty(numItems.toString())
+    } else {
+        setCartQty('0')
+    }
+  }
+
+  useEffect(setCartAmount, [shoppingCart])
+
+
+
 
 
   return (
     <>
-    <nav style={!user ? {display: 'none'} : {}}>
+    <nav id="navbar" style={!user ? {display: 'none'} : {}}>
       <div className='nav_container'>
         <div className='nav_logo'>
           <div>
@@ -36,6 +57,7 @@ const NavBar = () => {
         <div className='nav_options'>
           {user ? <>
             <button className='nav_sidebar_icons nav_cart_icon' onClick={() => setCart(!cart)}>
+                {cartQty > 0 ? <span className="cart-quantity">{cartQty}</span> : null}
               <i className="fas fa-shopping-cart" />
             </button>
           </>
@@ -94,7 +116,7 @@ const NavBar = () => {
         </div>
         <div className='cart_items'>
           <div className='cart_title'>{user?.username}'s Shopping Cart:</div>
-          <ShoppingCart />
+          <ShoppingCart cart={cart} setCart={setCart} />
         </div>
 
       </div>

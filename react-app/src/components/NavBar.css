@@ -1,9 +1,11 @@
 
-nav{
+#navbar {
     background-color: #29a829;
     height: 75px;
     display: flex;
     align-items: flex-end;
+    position: fixed;
+    width: 100%;
 }
 
 .nav_container{
@@ -52,8 +54,15 @@ nav{
 }
 
 .nav_cart_icon{
+    /* display: flex; */
     margin-left: 70%;
+    margin-top: 10%;
     font-size: 25px;
+}
+
+span.cart-quantity {
+    position: relative;
+    right: 1px;
 }
 
 .sidebar {

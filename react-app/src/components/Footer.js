@@ -11,8 +11,8 @@ export default function Footer() {
                     {name}
                 </div>
                 <div className='footer__links'>
-                    <a href={github} target='_blank'><i className="fab fa-github"></i></a>
-                    <a href={linkedin} target='_blank'><i className="fab fa-linkedin"></i></a>
+                    <a href={github} target='_blank' rel="noreferrer"><i className="fab fa-github"></i></a>
+                    <a href={linkedin} target='_blank' rel="noreferrer"><i className="fab fa-linkedin"></i></a>
                 </div>
             </div>
         )

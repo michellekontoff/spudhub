@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
 import { useRemoveItem, useAddItem, useSubtractItem } from "../../store/shoppingCart"
 import "./Cart.css"
 
@@ -13,7 +14,7 @@ const CartItem = ({ item }) => {
     return (
         <div className='cart-item'>
             <img src={product.image} alt={product.name} className="cart-item-img"></img>
-            <div className="cart-item-name">{product.name}</div>
+            <div className="cart-item-name"><Link to={`/products/${product.id}`}>{product.name}</Link></div>
             <div className="cart-item-price">${item.price.toFixed(2)}</div>
             <div className="cart-item-quantity">
                 <button onClick={addItem}>+</button>

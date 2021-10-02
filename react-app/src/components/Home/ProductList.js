@@ -21,7 +21,7 @@ function ProductList({product, user}) {
 
             <li className="product" >
                 {product.image ?
-                <img src={product.image} alt={product.id} onClick={() => setShowProductModal(true)}></img>
+                <img className="pointer" src={product.image} alt={product.id} onClick={() => setShowProductModal(true)}></img>
                 : <img src='https://i.imgur.com/BPOYKBx.png' alt={product.id} onClick={() => setShowProductModal(true)}></img>}
                 <div>{product.name}</div>
                 <div>${product.price.toFixed(2)}</div>

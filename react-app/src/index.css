@@ -1,4 +1,12 @@
 /* TODO Add site wide styles */
+button:hover {
+    cursor: pointer;
+}
+
+.pointer:hover {
+    cursor: pointer;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -14,6 +22,7 @@ a {
 
 a:hover {
     color: green;
+    cursor: pointer;
 }
 
 .error{
