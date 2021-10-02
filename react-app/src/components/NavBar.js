@@ -20,16 +20,17 @@ const NavBar = () => {
   const [showSignUpModal, setShowSignUpModal] = useState(false);
   const [cartQty, setCartQty] = useState('0')
 
+  let cartItems = Object.values(shoppingCart)
 
   function setCartAmount() {
-      let cartItems = Object.values(shoppingCart)
       cartItems = cartItems.map(item => item.quantity)
     if (cartItems.length) {
         const numItems = cartItems.reduce((item1, item2) => {
             return item1 + item2
           })
         setCartQty(numItems.toString())
-        console.log(numItems)
+    } else {
+        setCartQty('0')
     }
   }
 
@@ -56,7 +57,7 @@ const NavBar = () => {
         <div className='nav_options'>
           {user ? <>
             <button className='nav_sidebar_icons nav_cart_icon' onClick={() => setCart(!cart)}>
-                <span>{cartQty}</span>
+                {cartQty > 0 ? <span>{cartQty}</span> : null}
               <i className="fas fa-shopping-cart" />
             </button>
           </>
