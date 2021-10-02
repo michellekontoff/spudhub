@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Product.css'
 import { useSelector } from 'react-redux'
 import { useAddItem } from '../../store/shoppingCart'
 
 const ProductModal = ({ product, userId, setEditMode }) =>{
-    const history = useHistory()
     const cart = useSelector(state => state.shoppingCart)
     const addItem = useAddItem(product, cart)
 
@@ -17,16 +16,12 @@ const ProductModal = ({ product, userId, setEditMode }) =>{
                     </Link>
     }
 
-    const sendToDetailsPage = () => {
-        history.push(`/products/${product.id}`)
-    }
-
     return (
         <div className='product-details-container'>
-            <h1 onClick={sendToDetailsPage} className='product-header'>{product.name}</h1>
+            <h1 className='product-header'>{product.name}</h1>
             <div className="product-img-container">
                 {product.image ?
-                <img onClick={sendToDetailsPage} src={product.image} alt={product.id}></img>
+                <img src={product.image} alt={product.id}></img>
                 : <img src='https://i.imgur.com/BPOYKBx.png' alt={product.id}></img>}
             </div>
             <div className='product-description'>{product.description}</div>

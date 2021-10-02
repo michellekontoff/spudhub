@@ -26,14 +26,12 @@
 
 .product-img-container img {
     max-width: 300px;
-    cursor: pointer;
 }
 
 .product-header {
     grid-area: header;
     text-align: left;
     font-size: 40px;
-    cursor: pointer;
 }
 
 .product-price {
@@ -73,13 +71,4 @@
     justify-content: center;
     padding-top: 10px;
     height: 25px;
-}
-
-.product-avg-rating{
-    padding-top: 20px;
-    font-size: 20px;
-}
-
-.product-avg-rating i{
-    color: yellowgreen;
 }

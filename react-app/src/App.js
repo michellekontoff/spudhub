@@ -13,10 +13,6 @@ import ProductEditForm from './components/Products/ProductEditForm';
 import { authenticate } from './store/session';
 import ProductCreateForm from './components/Products/ProductCreateForm';
 import { fetchAllProducts } from './store/products';
-import { fetchAllReviews } from './store/reviews';
-import reducer, { loadCart } from './store/shoppingCart';
-import { createStore } from 'redux';
-import ReviewPage from './components/Reviews/ReviewPage';
 import Footer from './components/Footer';
 import Splash from './components/Splash';
 
@@ -29,8 +25,6 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(fetchAllProducts());
-      await dispatch(fetchAllReviews());
-
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -61,7 +55,6 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/products/:id' exact={true} >
           <ProductDetails  />
-          <ReviewPage />
         </ProtectedRoute>
         <ProtectedRoute path='/products/:id/edit' exact={true} >
           <ProductEditForm />
@@ -71,9 +64,6 @@ function App() {
         </ProtectedRoute>
         <Route path='/splash' exact={true}>
           <Splash />
-        </Route>
-        <Route path='/reviews/:id' exact={true} >
-          <ReviewPage />
         </Route>
         <Route>
           404 page not found

@@ -26,7 +26,6 @@ const ShoppingCart = () => {
    }, [setTotal, itemList])
 
 
-
    let purchaseButton ;
    if (itemList.length){
       purchaseButton= <button className="purchase_btn" onClick={resetCart}>Purchase</button>
