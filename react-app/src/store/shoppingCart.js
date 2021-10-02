@@ -85,6 +85,7 @@ export const useResetCartItems = () => {
     return async function() {
         await dispatch(resetCart());
         localStorage.removeItem('cart')
+        window.alert('Thank you for your purchase!')
         return
     }
 }
