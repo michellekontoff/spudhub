@@ -13,6 +13,7 @@ import ShoppingCart from './Cart/ShoppingCart';
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user);
+  const shoppingCart = useSelector(state => state.shoppingCart)
   const [optionsOn, setOptionsOn] = useState(false);
   const [cart, setCart] = useState(true);
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -21,7 +22,7 @@ const NavBar = () => {
 
   return (
     <>
-    <nav style={!user ? {display: 'none'} : {}}>
+    <nav id="navbar" style={!user ? {display: 'none'} : {}}>
       <div className='nav_container'>
         <div className='nav_logo'>
           <div>

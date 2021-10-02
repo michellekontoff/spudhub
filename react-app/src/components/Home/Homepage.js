@@ -23,7 +23,7 @@ function HomePage() {
     const user = useSelector(state => state.session.user);
 
     return (
-        <div>
+        <div id="homepage">
             <h1>SpudHub</h1>
             <div className="container">
                 <ul className="list">

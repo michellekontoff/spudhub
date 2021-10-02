@@ -1,9 +1,11 @@
 
-nav{
+#navbar {
     background-color: #29a829;
     height: 75px;
     display: flex;
     align-items: flex-end;
+    position: fixed;
+    width: 100%;
 }
 
 .nav_container{
