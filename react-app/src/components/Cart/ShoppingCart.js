@@ -6,12 +6,17 @@ import { useEffect, useState } from "react"
 
 
 
-const ShoppingCart = () => {
+const ShoppingCart = ({cart, setCart}) => {
    const [total, setTotal] = useState(0)
 
    const cartObject = useSelector(state => state.shoppingCart)
    const itemList = Object.values(cartObject)
    const resetCart = useResetCartItems()
+
+   function purchase() {
+       resetCart()
+       setCart(!cart)
+   }
 
 
    useEffect(() => {
@@ -28,7 +33,7 @@ const ShoppingCart = () => {
 
    let purchaseButton ;
    if (itemList.length){
-      purchaseButton= <button className="purchase_btn" onClick={resetCart}>Purchase</button>
+      purchaseButton= <button className="purchase_btn" onClick={purchase}>Purchase</button>
    }
    else{
       purchaseButton = null

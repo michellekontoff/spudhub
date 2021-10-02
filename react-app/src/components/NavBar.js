@@ -24,10 +24,8 @@ const NavBar = () => {
   function setCartAmount() {
       let cartItems = Object.values(shoppingCart)
       cartItems = cartItems.map(item => item.quantity)
-    //   console.log(cartItems)
     if (cartItems.length) {
         const numItems = cartItems.reduce((item1, item2) => {
-            // console.log(item1)
             return item1 + item2
           })
         setCartQty(numItems.toString())
@@ -117,7 +115,7 @@ const NavBar = () => {
         </div>
         <div className='cart_items'>
           <div className='cart_title'>{user?.username}'s Shopping Cart:</div>
-          <ShoppingCart />
+          <ShoppingCart cart={cart} setCart={setCart} />
         </div>
 
       </div>
