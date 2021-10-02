@@ -57,7 +57,7 @@ const NavBar = () => {
         <div className='nav_options'>
           {user ? <>
             <button className='nav_sidebar_icons nav_cart_icon' onClick={() => setCart(!cart)}>
-                {cartQty > 0 ? <span>{cartQty}</span> : null}
+                {cartQty > 0 ? <span className="cart-quantity">{cartQty}</span> : null}
               <i className="fas fa-shopping-cart" />
             </button>
           </>
