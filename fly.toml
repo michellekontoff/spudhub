@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for spudhub on 2024-12-23T17:47:39-08:00
+# fly.toml app configuration file generated for spud-hub on 2025-05-24T00:07:34-07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -11,7 +11,7 @@ primary_region = 'sjc'
 [http_service]
   internal_port = 8000
   force_https = true
-  auto_stop_machines = "suspend"
+  auto_stop_machines = 'suspend'
   auto_start_machines = true
   min_machines_running = 1
   processes = ['app']
