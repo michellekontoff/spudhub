@@ -24,7 +24,7 @@ function HomePage() {
 
     return (
         <div>
-            <h1>SpudHub</h1>
+            <h1>Farm 2 Fork</h1>
             <div className="container">
                 <ul className="list">
                     {products.map((product) => (
